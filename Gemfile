@@ -25,6 +25,11 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+
+gem 'foundation-rails', git: 'https://github.com/AquisTech/foundation-rails.git', branch: 'bugfix-281-fix-js-base-dir-for-install-generator'
+gem 'autoprefixer-rails'
+gem 'devise', '~> 4.7', '>= 4.7.3'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
