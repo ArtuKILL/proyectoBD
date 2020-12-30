@@ -7,9 +7,16 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
+import 'foundation-sites'
+require("jquery")
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+Foundation.addToJquery($);
 
 $(function(){ $(document).foundation(); });
