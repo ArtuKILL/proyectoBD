@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :clientes
   get 'home/index'
   get 'test/index'
   root 'test#index'
