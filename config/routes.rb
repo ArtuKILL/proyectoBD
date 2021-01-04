@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :agencies
+  devise_for :clientes
   get 'home/index'
   get 'test/index'
   root 'home#index'

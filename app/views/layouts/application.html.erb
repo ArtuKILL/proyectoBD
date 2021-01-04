@@ -63,7 +63,18 @@
       </div>
     </div> 
 
-    <%= yield %>
+    <div class="notice">
+      <%= notice %>
+    </div>
+    <!-- [TODO]: TERMINAR ESTO -->
+    <div class="alert">
+      <%= alert %>
+    </div>
+
+    <div class="grid-container">
+      <%= yield %>
+    </div>
+
 
   </body>
 
@@ -79,3 +90,7 @@
 
   </footer>
 </html>
+
+
+
+

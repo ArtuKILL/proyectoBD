@@ -1,2 +1,23 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Home Page</h1>
+
+
+<style>
+    p {
+        color: red;
+    }
+</style>
+
+<div class="grid-x grid-margin-x">
+    <div class="cell medium 6">
+        <div class="callout secondary radius bordered shadow">
+            <h4>Modelo: <%= @titulo%></h4>
+            <ul>
+                <% @atributos.each do |atributo| %>
+                <li>
+                    <p><%= atributo %></p>
+                </li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</div>

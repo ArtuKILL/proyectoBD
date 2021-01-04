@@ -20,4 +20,25 @@ ActiveRecord::Schema.define(version: 2021_01_04_024711) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "clientes", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "id_natrif"
+    t.string "nombre"
+    t.string "segundo_nombre"
+    t.string "primer_apellido"
+    t.string "segundo_apellido"
+    t.string "genero"
+    t.date "fecha_nac"
+    t.string "direccion"
+    t.string "tipo"
+    t.index ["email"], name: "index_clientes_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_clientes_on_reset_password_token", unique: true
+  end
+
 end
