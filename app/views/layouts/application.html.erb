@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Destinos" %></title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_pack_tag "application", 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
+  <title><%= content_for?(:title) ? yield(:title) : "Destinos" %></title>
 
-  <body>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_pack_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
 
+<body>
+  <div class="notice">
+    <%= notice %>
+  </div>
+  <!-- [TODO]: TERMINAR ESTO -->
+  <div class="alert">
+    <%= alert %>
+  </div>
+
+  <div class="grid-container">
     <%= yield %>
+  </div>
 
-  </body>
+</body>
+
 </html>
