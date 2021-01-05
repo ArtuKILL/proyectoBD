@@ -43,3 +43,8 @@
 #search-icon{
     padding-left: 10px;
 }
+
+.full-width{
+    width:2000px;
+    height: auto;
+}
