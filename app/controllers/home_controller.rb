@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    Cliente.all
+    Cliente.connection
     @atributos = Cliente.inspect.scan(/\w+/)
     @titulo = @atributos.slice!(0)
   end
