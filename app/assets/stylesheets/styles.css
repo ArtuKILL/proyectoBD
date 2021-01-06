@@ -50,6 +50,10 @@
     height: 400px;
 }
 
+.title-form{
+    text-align: center;
+}
+
 #search-icon{
     padding-left: 10px;
 }

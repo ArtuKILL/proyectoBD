@@ -1,17 +1,16 @@
+
 <%= form_with(model: agency) do |form| %>
   <% if agency.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(agency.errors.count, "error") %> prohibited this agency from being saved:</h2>
+   <div id="error_explanation">
+      <h2><%=pluralize(agency.errors.count, "error") %> prohibited this agency from being saved:</h2> 
 
       <ul>
         <% agency.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
-    </div>
+    </div> 
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.label :nombre, " Nombre de la Agencia:" %>
 <% end %>
