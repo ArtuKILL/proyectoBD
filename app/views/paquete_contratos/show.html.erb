@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nro presupuesto:</strong>
+  <%= @paquete_contrato.nro_presupuesto %>
+</p>
+
+<p>
+  <strong>Fecha emision:</strong>
+  <%= @paquete_contrato.fecha_emision %>
+</p>
+
+<p>
+  <strong>Total calculado:</strong>
+  <%= @paquete_contrato.total_calculado %>
+</p>
+
+<p>
+  <strong>Fecha salida:</strong>
+  <%= @paquete_contrato.fecha_salida %>
+</p>
+
+<p>
+  <strong>Nro factura:</strong>
+  <%= @paquete_contrato.nro_factura %>
+</p>
+
+<p>
+  <strong>Email contacto:</strong>
+  <%= @paquete_contrato.email_contacto %>
+</p>
+
+<%= link_to 'Edit', edit_paquete_contrato_path(@paquete_contrato) %> |
+<%= link_to 'Back', paquete_contratos_path %>

@@ -1,0 +1,2 @@
+class PaqueteContrato < ApplicationRecord
+end

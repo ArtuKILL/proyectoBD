@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :paquete_contratos
   resources :agencies
   devise_for :clientes
   get 'home/index'
