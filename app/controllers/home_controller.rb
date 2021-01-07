@@ -6,5 +6,7 @@ class HomeController < ApplicationController
     Cliente.all
     @atributos = Cliente.inspect.scan(/\w+/)
     @titulo = @atributos.slice!(0)
+
+    # @agencies = agencies_url.all.select(:nombre_agencia)
   end
 end
