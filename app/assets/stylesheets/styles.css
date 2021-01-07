@@ -32,6 +32,11 @@
     font-family: 'Rajdhani';
 }
 
+.title{
+    font-family: 'Dancing Script';
+    
+}
+
 .footer{
     background-color: #114E60;
     text-align: center;
@@ -40,11 +45,42 @@
     padding: 50px;
 }
 
+.full-width{
+    width:2000px;
+    height: 400px;
+}
+
+.title-form{
+    text-align: center;
+}
+
+.line{
+    box-shadow: 1px 1px 10px gray;
+    padding-bottom: 2px;
+}
+
+.rounded{
+    border: 2px solid rgb(209, 204, 204);
+    border-radius: 20px 20px 20px 20px;
+}
+
+.error-message{
+    color: red;
+    
+}
+
+.size{
+    font-size: 23px;
+}
+
 #search-icon{
     padding-left: 10px;
 }
 
-.full-width{
-    width:2000px;
-    height: auto;
+#agency-card{
+    border-radius: 35px 35px 35px 35px;
+    font-size: 40px;
+    box-shadow: 1px 1px 10px gray;
+    text-align: center;
 }
+
