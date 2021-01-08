@@ -1,17 +1,37 @@
-<%= form_with(model: agency) do |form| %>
-  <% if agency.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(agency.errors.count, "error") %> prohibited this agency from being saved:</h2>
 
-      <ul>
-        <% agency.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+<br>
+<div class="grid-x">
+  <div class="cell large-2"></div>
+  <div class="cell large-8 text">
+
+    <%= form_with(model: agency) do |form| %>
+      <% if agency.errors.any? %>
+            <% agency.errors.each do |error| %>
+              <ul><p class="error-message">*<%= error.full_message%></p></ul>
+            <% end %>
+      <% end %>
+
+      <span class="size-letter"><%= form.label :nombre_agencia, "Nombre de la Agencia:" %></span>
+      <%= form.text_field :nombre_agencia %>
+      <%= form.label :url, "Link/Url de la Agencia:" %>
+      <%= form.text_field :url %>
+      <%= form.label :descripcion, "Descrición de la Agencia:" %>
+      <%= form.text_area :descripcion, size: "70x3" %>
+      <%= form.label :alcance, "Alcance de la Agencia:" %>
+      <%= form.select :alcance, ["Local", "Nacional", "Internacional"] %>
+      <%= form.label :tipo, "Tipo de la Agencia:" %>
+      <%= form.select :tipo, ["Tour Operadoras", "Mayoristas", "Minoristas", "Mixta"] %>
+      <%= form.label :picture, "Imagen Referencial:" %>
+      <%= form.file_field :picture %>
   </div>
+  <div class="cell large-2"></div>
+</div>
+
+<br>
+<div class="grid-x">
+  <div class="cell large-4"></div>
+  <div class="cell large-4"><%= form.submit class: "button text size expanded rounded"%></div>
+  <div class="cell large-4"></div>
+</div>
 <% end %>

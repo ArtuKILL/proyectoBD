@@ -1,6 +1,31 @@
  <p id="notice"><%= notice %></p> 
 
-<h1>Agencies</h1>
+<div class="grid-x">
+    <div class="cell large-2"></div>
+    <div class="cell large-8 title-form">
+        <br>
+        <h1 class="title">Administración de Agencias</h1>
+        <hr class="line">
+    </div>
+    <div class="cell large-2"></div>
+</div>
+
+<br>
+<br>
+<div class="grid-x">
+  <div class="cell large-4"></div>
+  <div class="cell large-8"> 
+    <div class="grid-x text">
+    <div class="cell large-5">
+      <%= button_to "Agregar Agencia", { action: "new" }, class: "button expanded rounded size" %>
+    </div>
+    <div class="cell large-2"></div>
+    <div class="cell large-5">
+      <%= button_to "Eliminar Agencia", { action: "new" }, class: "button expanded rounded size" %>
+    </div>
+    </div>
+  </div>
+</div>
 
   <tbody>
     <% @agencies.each do |agency| %>

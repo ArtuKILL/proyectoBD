@@ -69,6 +69,6 @@ class AgenciesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def agency_params
-      params.fetch(:agency, {})
+      params.fetch(:agency, {}).permit(:nombre_agencia, :url, :alcance, :tipo, :descripcion)
     end
 end
