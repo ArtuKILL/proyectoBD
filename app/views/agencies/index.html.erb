@@ -12,25 +12,32 @@
 
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+
 <div class="grid-x">
-  <div class="cell large-4"></div>
-  <div class="cell large-8"> 
+  <div class="cell large-4 boxx-rounded"></div>
+  <div class="cell large-1 "></div>
+  <div class="cell large-7"> 
     <div class="grid-x text">
     <div class="cell large-5">
-      <%= button_to "Agregar Agencia", { action: "new" }, class: "button expanded rounded size" %>
+      <%= button_to "Agregar Agencia", {action: 'new'}, class: "button expanded rounded size" %>
     </div>
     <div class="cell large-2"></div>
     <div class="cell large-5">
       <%= button_to "Editar Agencia", { action: "new" }, class: "button expanded rounded size" %>
     </div>
+    </div>
     <br>
-    <div class="grid-x">
+    <br>
+    <div class="grid-x ">
       <div class="cell large-1"></div>
       <div class="cell large-10">
-            <%= render  "agencies/agenciescolumn" %>
+          <%= render  "agencies/agenciescolumn" %>
       </div>
       <div class="cell large-1"></div>
-    </div>
     </div>
   </div>
 </div>

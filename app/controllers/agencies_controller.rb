@@ -3,7 +3,9 @@ class AgenciesController < ApplicationController
 
   # GET /agencies
   # GET /agencies.json
- 
+  def index
+    @agencies = Agency.all.select(:nombre_agencia)
+  end
 
   # GET /agencies/1
   # GET /agencies/1.json
@@ -17,6 +19,7 @@ class AgenciesController < ApplicationController
 
   # GET /agencies/1/edit
   def edit
+    @agencies = Agency.find(params[:id])
   end
 
   # POST /agencies

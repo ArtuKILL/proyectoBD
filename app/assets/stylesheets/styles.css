@@ -55,7 +55,7 @@
 }
 
 .line{
-    box-shadow: 1px 1px 10px gray;
+    box-shadow: 1px 1px 10px rgb(51, 49, 49);
     padding-bottom: 2px;
 }
 
@@ -70,7 +70,21 @@
 }
 
 .size{
-    font-size: 23px;
+    font-size: 25px;
+}
+
+.table{
+    padding-top: 12px;
+}
+
+.trash-icon{
+    padding-top: 20px;
+}
+
+.boxx-rounded{
+    border: 2px solid rgb(209, 204, 204);
+    border-radius: 35px 35px 35px 35px;
+    box-shadow: 1px 1px 10px rgb(51, 49, 49);
 }
 
 #search-icon{
