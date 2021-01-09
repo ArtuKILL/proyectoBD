@@ -6,6 +6,6 @@ class Agency < ApplicationRecord
         message: "only allows letters" }
 
     def index
-        @agencies=agencies.all
+         @agencies = Agency.all.select(:id_agencia)
     end
 end

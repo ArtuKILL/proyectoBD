@@ -3,9 +3,7 @@ class AgenciesController < ApplicationController
 
   # GET /agencies
   # GET /agencies.json
-  def index
-    @agencies = Agency.all
-  end
+ 
 
   # GET /agencies/1
   # GET /agencies/1.json
@@ -60,6 +58,7 @@ class AgenciesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_05_051159) do
+ActiveRecord::Schema.define(version: 2021_01_07_174317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 2021_01_05_051159) do
     t.string "alcance", limit: 15, null: false
     t.text "descripcion", null: false
     t.string "tipo", limit: 25, null: false
+  end
+
+  create_table "bancos", force: :cascade do |t|
+    t.string "nombre_banco"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "clientes", force: :cascade do |t|
@@ -45,6 +51,37 @@ ActiveRecord::Schema.define(version: 2021_01_05_051159) do
     t.string "tipo"
     t.index ["email"], name: "index_clientes_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clientes_on_reset_password_token", unique: true
+  end
+
+  create_table "forma_pagos", force: :cascade do |t|
+    t.string "tipo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "paquete_contratos", force: :cascade do |t|
+    t.integer "nro_presupuesto"
+    t.date "fecha_emision"
+    t.decimal "total_calculado"
+    t.date "fecha_salida"
+    t.integer "nro_factura"
+    t.string "email_contacto"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "registro_clientes", force: :cascade do |t|
+    t.integer "nro_registro"
+    t.date "fecha_registro"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tipos", force: :cascade do |t|
+    t.string "numero"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
