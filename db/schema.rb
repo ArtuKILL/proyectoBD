@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_12_175106) do
+ActiveRecord::Schema.define(version: 2021_01_17_194730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,11 @@ ActiveRecord::Schema.define(version: 2021_01_12_175106) do
     t.string "seg_nombre_asesor"
     t.string "apellido_asesor", null: false
     t.string "seg_apellido_asesor", null: false
+  end
+
+  create_table "atracciones", primary_key: "id_atraccion", id: :bigint, default: nil, force: :cascade do |t|
+    t.string "nombre_atraccion", null: false
+    t.text "descripcion_atrac", null: false
   end
 
   create_table "atracciones_circuitos", id: false, force: :cascade do |t|
@@ -120,6 +125,11 @@ ActiveRecord::Schema.define(version: 2021_01_12_175106) do
     t.integer "precio_base", null: false
   end
 
+  create_table "itinerarios", id: false, force: :cascade do |t|
+    t.integer "tiempo_estadia", limit: 2, null: false
+    t.text "descripcion", null: false
+  end
+
   create_table "itinerarios_atracciones", id: false, force: :cascade do |t|
     t.integer "orden", limit: 2
   end
@@ -150,6 +160,16 @@ ActiveRecord::Schema.define(version: 2021_01_12_175106) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "paquetes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "participantes", primary_key: "id_participante", id: :bigint, default: nil, force: :cascade do |t|
+    t.integer "nro_equipo", limit: 2
+    t.integer "posicion", limit: 2
+  end
+
   create_table "pasaportes", primary_key: "num_pasaporte", id: :string, force: :cascade do |t|
   end
 
@@ -157,6 +177,11 @@ ActiveRecord::Schema.define(version: 2021_01_12_175106) do
     t.string "nombre_premio", null: false
     t.string "puesto", null: false
     t.text "descripcion", null: false
+  end
+
+  create_table "rallies", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "registro_clientes", force: :cascade do |t|
@@ -178,6 +203,13 @@ ActiveRecord::Schema.define(version: 2021_01_12_175106) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "valoraciones", primary_key: "id_valoracion", id: :bigint, default: nil, force: :cascade do |t|
+    t.string "tipo", null: false
+    t.string "pais_favorito", null: false
+    t.string "ciudad_favorita", null: false
+    t.string "atraccion_favorita", null: false
   end
 
   create_table "viajes_compras", id: false, force: :cascade do |t|

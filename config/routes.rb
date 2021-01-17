@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :rallies
+  resources :paquetes
   resources :paquete_contratos
   resources :agencies
   devise_for :clientes
