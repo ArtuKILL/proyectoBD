@@ -163,6 +163,10 @@ ActiveRecord::Schema.define(version: 2021_01_17_194730) do
   create_table "paquetes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "nombre_paquete", limit: 60, null: false
+    t.text "descripcion", null: false
+    t.integer "cant_personas", limit: 2, null: false
+    t.integer "duracion_dias", limit: 2, null: false
   end
 
   create_table "participantes", primary_key: "id_participante", id: :bigint, default: nil, force: :cascade do |t|
@@ -180,8 +184,12 @@ ActiveRecord::Schema.define(version: 2021_01_17_194730) do
   end
 
   create_table "rallies", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.date "created_at", null: false
+    t.string "nombre_rally", null: false
+    t.date "fecha_final", null: false
+    t.integer "precio_rally", limit: 2
+    t.string "tipo", null: false
+    t.integer "cupos_totales", limit: 2, null: false
   end
 
   create_table "registro_clientes", force: :cascade do |t|
