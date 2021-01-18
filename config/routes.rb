@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :viajeros
   resources :rallies
   resources :paquetes
   resources :paquete_contratos

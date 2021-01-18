@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Primer nombre:</strong>
+  <%= @viajero.primer_nombre %>
+</p>
+
+<p>
+  <strong>Segundo nombre:</strong>
+  <%= @viajero.segundo_nombre %>
+</p>
+
+<p>
+  <strong>Primer apellido:</strong>
+  <%= @viajero.primer_apellido %>
+</p>
+
+<p>
+  <strong>Segundo apellido:</strong>
+  <%= @viajero.segundo_apellido %>
+</p>
+
+<p>
+  <strong>Genero:</strong>
+  <%= @viajero.genero %>
+</p>
+
+<p>
+  <strong>Fecha nacimiento:</strong>
+  <%= @viajero.fecha_nacimiento %>
+</p>
+
+<p>
+  <strong>Correo viajero:</strong>
+  <%= @viajero.correo_viajero %>
+</p>
+
+<%= link_to 'Edit', edit_viajero_path(@viajero) %> |
+<%= link_to 'Back', viajeros_path %>
