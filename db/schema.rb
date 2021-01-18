@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_17_194730) do
+ActiveRecord::Schema.define(version: 2021_01_18_002709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 2021_01_17_194730) do
     t.string "alcance", limit: 15, null: false
     t.text "descripcion", null: false
     t.string "tipo", limit: 20, null: false
-    t.check_constraint "(alcance)::text = ANY ((ARRAY['Local'::character varying, 'Nacional'::character varying, 'Internacional'::character varying])::text[])", name: "alcance_a"
-    t.check_constraint "(tipo)::text = ANY ((ARRAY['Tour Operadoras'::character varying, 'Mayoristas'::character varying, 'Minoristas'::character varying, 'Mixta'::character varying])::text[])", name: "tipo_a"
+    t.check_constraint "(alcance)::text = ANY (ARRAY[('Local'::character varying)::text, ('Nacional'::character varying)::text, ('Internacional'::character varying)::text])", name: "alcance_a"
+    t.check_constraint "(tipo)::text = ANY (ARRAY[('Tour Operadoras'::character varying)::text, ('Mayoristas'::character varying)::text, ('Minoristas'::character varying)::text, ('Mixta'::character varying)::text])", name: "tipo_a"
   end
 
   create_table "alojamientos_hoteles", primary_key: "id_hotel", id: :bigint, default: nil, force: :cascade do |t|
