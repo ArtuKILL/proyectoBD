@@ -1,0 +1,2 @@
+class Circuito < ApplicationRecord
+end
