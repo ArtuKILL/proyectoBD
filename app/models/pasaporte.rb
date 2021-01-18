@@ -1,0 +1,2 @@
+class Pasaporte < ApplicationRecord
+end
