@@ -1,0 +1,2 @@
+class DetalleServicio < ApplicationRecord
+end
