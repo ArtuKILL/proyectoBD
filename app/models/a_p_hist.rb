@@ -1,3 +1,3 @@
 class APHist < ApplicationRecord
-    #ap_hist -> a_p_hists
+    self.table_name = "a_p_hist"
 end
