@@ -3,5 +3,6 @@ class CiudadLocalidad < ApplicationRecord
     has_many :atracciones
     has_many :circuitos
     has_many :valoraciones
+    has_many :itinerarios
     belongs_to :pais
 end
