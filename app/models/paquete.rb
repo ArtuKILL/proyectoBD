@@ -3,4 +3,5 @@ class Paquete < ApplicationRecord
     has_many :paquete_contratos
     has_many :hist_precios
     has_many :detalle_servicios
+    has_many :calendario_anuales
 end
