@@ -16,17 +16,49 @@
 <br>
 
 <div class="grid-x">
-  <div class="cell large-4 boxx-rounded"></div>
+  <div class="cell large-4 boxx-rounded">
+   <p class="text filter">Filtrar por:</p>
+    <br>
+    <br> 
+    
+    <ul class="accordion text" data-accordion>
+      <li class="accordion-item is-active" data-accordion-item>
+        <a href="#" class="accordion-title size">Accordion 1</a>
+        <div class="accordion-content" data-tab-content >
+          <div class="grid-x">
+            <div class="cell large-3"></div>
+            <div class="cell large-1">
+              <%= check_box_tag 'alcance', 'local', false, class: 'text' %>
+            </div>
+            <div class="cell large-6">
+              <p>Local</p>
+            </div>
+            <div class="cell large-2"></div>
+          </div>
+        </div>
+      </li>
+      <li class="accordion-item" data-accordion-item>
+        <a href="#" class="accordion-title size">Accordion 2</a>
+        <div class="accordion-content" data-tab-content>
+
+        </div>
+      </li>
+      <li class="accordion-item" data-accordion-item>
+        <a href="#" class="accordion-title size">Accordion 3</a>
+        <div class="accordion-content" data-tab-content>
+         
+        </div>
+      </li>
+    </ul>
+  </div>
   <div class="cell large-1 "></div>
   <div class="cell large-7"> 
     <div class="grid-x text">
-    <div class="cell large-5">
-      <%= button_to "Agregar Agencia", {action: 'new'}, class: "button expanded rounded size" %>
+    <div class="cell large-3"></div>
+    <div class="cell large-6">
+      <%= button_to "Agregar Agencia", new_agency_path, :method => :get, class: "button expanded rounded size" %>
     </div>
-    <div class="cell large-2"></div>
-    <div class="cell large-5">
-      <%= button_to "Editar Agencia", { action: "new" }, class: "button expanded rounded size" %>
-    </div>
+    <div class="cell large-3"></div>
     </div>
     <br>
     <br>
