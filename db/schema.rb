@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_20_084840) do
+ActiveRecord::Schema.define(version: 2021_01_20_092940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -258,12 +258,10 @@ ActiveRecord::Schema.define(version: 2021_01_20_084840) do
 
   create_table "aci_socios", primary_key: "fecha_inicial", id: :date, force: :cascade do |t|
     t.date "fecha_final"
-    t.bigint "agency_id", null: false
     t.bigint "agencia1_id"
     t.bigint "agencia2_id"
     t.index ["agencia1_id"], name: "index_socios_on_agencia1_id"
     t.index ["agencia2_id"], name: "index_socios_on_agencia2_id"
-    t.index ["agency_id"], name: "index_socios_on_agency_id"
   end
 
   create_table "aci_valoraciones", primary_key: "id_valoracion", force: :cascade do |t|
