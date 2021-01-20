@@ -69,6 +69,6 @@ class ViajerosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def viajero_params
-      params.require(:viajero).permit(:primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :genero, :fecha_nacimiento, :correo_viajero)
+      params.require(:viajero).permit(:id_viajero, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :genero, :fecha_nacimiento, :correo_viajero)
     end
 end
