@@ -4,4 +4,5 @@ class AreaintE < ApplicationRecord
     belongs_to :area_interes
     belongs_to :paquete
     belongs_to :atraccion
+    belongs_to :asesor
 end
