@@ -4,7 +4,8 @@ class Agency < ApplicationRecord
     has_many :ofertas
     has_many :registro_clientes
     has_many :empresa_proveedores, :through => :a_p_hists
-    has_many :clientes, :through => :registro_clientes  
+    has_many :clientes, :through => :registro_clientes
+    has_many :metodo_pagos  
     
 
     validates :nombre_agencia, :url, :descripcion, :alcance, :tipo, presence: true
