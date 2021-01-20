@@ -1,3 +1,4 @@
 class CalendarioAnual < ApplicationRecord
-    #calendarios_anuales a calendario_anuales
+    self.table_name = "#{self.table_name_prefix}calendarios_anuales"
+    belongs_to :paquete
 end

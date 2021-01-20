@@ -1,3 +1,5 @@
 class ViajeCompra < ApplicationRecord
-    # [TODO] Cambiar la tabla viajes_compras a viajes_compra
+    self.table_name = "#{self.table_name_prefix}viajes_compras"
+    belongs_to :paquete_contrato
+    belongs_to :registro_viajero
 end
