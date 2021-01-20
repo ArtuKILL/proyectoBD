@@ -7,5 +7,6 @@ class PaqueteContrato < ApplicationRecord
     has_many :metodo_pagos, :through => :forma_pagos
     has_many :viaje_compras
     has_many :registro_viajeros, :through => :viaje_compras
+    has_many :valoraciones
 
 end
