@@ -6,8 +6,8 @@
   <div class="cell large-8 text">
 
     <%= form_with(model: agency) do |form| %>
-      <% if agency.errors.any? %>
-            <% agency.errors.each do |error| %>
+      <% if @agency.errors.any? %>
+            <% @agency.errors.each do |error| %>
               <ul><p class="error-message">*<%= error.full_message%></p></ul>
             <% end %>
       <% end %>

@@ -81,6 +81,16 @@
     padding-top: 20px;
 }
 
+.edit-icon{
+    padding-top: 20px;
+}
+
+.filter{
+    padding-top: 50px;
+    padding-left: 40px;
+    font-size: 40px;
+}
+
 .boxx-rounded{
     border: 2px solid rgb(209, 204, 204);
     border-radius: 35px 35px 35px 35px;

@@ -1,5 +1,5 @@
 class Asesor < ApplicationRecord
-    # def self.table_name_prefix
-    #     'aci_'
-    # end
+    has_many :paquete_contratos
+    has_many :areaint_es
+    belongs_to :agency
 end
