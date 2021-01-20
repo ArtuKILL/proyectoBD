@@ -11,7 +11,8 @@ class Agency < ApplicationRecord
     has_many :registro_viajeros
     has_many :agencia_rallies
     has_many :rallies, :through => :agencia_rallies
-    has_many :asesores  
+    has_many :asesores
+    has_many :areaint_es  
     
 
     validates :nombre_agencia, :url, :descripcion, :alcance, :tipo, presence: true
