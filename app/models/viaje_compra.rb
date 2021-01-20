@@ -1,3 +1,3 @@
 class ViajeCompra < ApplicationRecord
-    # [TODO] Cambiar la tabla viajes_compras a viajes_compra
+    self.table_name = "#{self.table_name_prefix}viajes_compra"
 end

@@ -1,5 +1,4 @@
 class Agency < ApplicationRecord
-
     has_many :paquetes
     has_many :a_p_hists
     has_many :empresa_proveedores, :through => :a_p_hists

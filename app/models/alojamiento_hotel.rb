@@ -1,3 +1,3 @@
 class AlojamientoHotel < ApplicationRecord
-    #alojamientos_hoteles a alojamientos_hotel
+    self.table_name = "#{self.table_name_prefix}alojamientos_hoteles"
 end

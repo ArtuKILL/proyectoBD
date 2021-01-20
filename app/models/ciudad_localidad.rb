@@ -1,3 +1,3 @@
 class CiudadLocalidad < ApplicationRecord
-    #ciudades_localidades -> ciudades-localidad
+    self.table_name = "#{self.table_name_prefix}ciudades_localidades"
 end

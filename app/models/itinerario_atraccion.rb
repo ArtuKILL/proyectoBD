@@ -1,3 +1,3 @@
 class ItinerarioAtraccion < ApplicationRecord
-    # itinerarios_atracciones -> itinerario_atracciones
+    self.table_name = "#{self.table_name_prefix}itinerarios_atracciones"
 end

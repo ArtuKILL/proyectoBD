@@ -1,3 +1,3 @@
 class AtraccionCircuito < ApplicationRecord
-    #atracciones_circuitos -> atracciones_circuito
+    self.table_name = "#{self.table_name_prefix}atracciones_circuitos"   
 end
