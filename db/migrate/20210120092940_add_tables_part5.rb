@@ -1,8 +1,3 @@
-class < ActiveRecord::Migration[6.1]
-  def change
-  end
-end
-
 class AddTablesPart5  < ActiveRecord::Migration[6.1]
   def change
     create_table "aci_agencias_rallies", id: false, force: :cascade do |t|
