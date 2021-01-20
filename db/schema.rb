@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.bigint "id_rally", null: false
   end
 
-  create_table "aci_agencies", force: :cascade do |t|
+  create_table "aci_agencies", id: :bigint, default: -> { "nextval('agencies_id_seq'::regclass)" }, force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "nombre_agencia", limit: 35, null: false
@@ -29,11 +29,11 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.string "alcance", limit: 15, null: false
     t.text "descripcion", null: false
     t.string "tipo", limit: 20, null: false
-    t.check_constraint "(alcance)::text = ANY (ARRAY[('Local'::character varying)::text, ('Nacional'::character varying)::text, ('Internacional'::character varying)::text])", name: "alcance_a"
-    t.check_constraint "(tipo)::text = ANY (ARRAY[('Tour Operadoras'::character varying)::text, ('Mayoristas'::character varying)::text, ('Minoristas'::character varying)::text, ('Mixta'::character varying)::text])", name: "tipo_a"
+    t.check_constraint "(alcance)::text = ANY ((ARRAY['Local'::character varying, 'Nacional'::character varying, 'Internacional'::character varying])::text[])", name: "alcance_a"
+    t.check_constraint "(tipo)::text = ANY ((ARRAY['Tour Operadoras'::character varying, 'Mayoristas'::character varying, 'Minoristas'::character varying, 'Mixta'::character varying])::text[])", name: "tipo_a"
   end
 
-  create_table "aci_alojamientos_hoteles", primary_key: "id_hotel", force: :cascade do |t|
+  create_table "aci_alojamientos_hoteles", primary_key: "id_hotel", id: :bigint, default: -> { "nextval('alojamientos_hoteles_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "nombre_hotel", null: false
   end
 
@@ -43,13 +43,13 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.bigint "id_agencia", null: false
   end
 
-  create_table "aci_area_intereses", primary_key: "id_interes", force: :cascade do |t|
+  create_table "aci_area_intereses", primary_key: "id_interes", id: :bigint, default: -> { "nextval('area_intereses_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "categoria_interes", null: false
     t.text "descripcion_interes"
     t.index ["categoria_interes"], name: "categoria_int", unique: true
   end
 
-  create_table "aci_areaint_es", primary_key: "id_areaint_esp", force: :cascade do |t|
+  create_table "aci_areaint_es", primary_key: "id_areaint_esp", id: :bigint, default: -> { "nextval('areaint_es_id_seq'::regclass)" }, force: :cascade do |t|
     t.text "comentario"
     t.bigint "id_interes", null: false
     t.bigint "id_asesor", null: false
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.bigint "id_agencia", null: false
   end
 
-  create_table "aci_asesores", primary_key: "id_asesor", force: :cascade do |t|
+  create_table "aci_asesores", primary_key: "id_asesor", id: :bigint, default: -> { "nextval('asesores_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "nombre_asesor", null: false
     t.string "seg_nombre_asesor"
     t.string "apellido_asesor", null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.bigint "id_agencia", null: false
   end
 
-  create_table "aci_atracciones", primary_key: "id_atraccion", force: :cascade do |t|
+  create_table "aci_atracciones", primary_key: "id_atraccion", id: :bigint, default: -> { "nextval('atracciones_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "nombre_atraccion", null: false
     t.text "descripcion_atrac", null: false
     t.bigint "id_ciudad", null: false
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.string "orden_circuito", limit: 1, null: false
   end
 
-  create_table "aci_bancos", force: :cascade do |t|
+  create_table "aci_bancos", id: :bigint, default: -> { "nextval('bancos_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "nombre_banco"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -89,19 +89,19 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.bigint "id_paquete", null: false
   end
 
-  create_table "aci_circuitos", primary_key: "orden", id: { type: :string, limit: 1 }, force: :cascade do |t|
+  create_table "aci_circuitos", primary_key: "orden", id: { type: :string, limit: 1, default: -> { "nextval('circuitos_id_seq'::regclass)" } }, force: :cascade do |t|
     t.string "max_dias", null: false
     t.bigint "id_rally", null: false
     t.bigint "id_ciudad", null: false
     t.index ["orden"], name: "orden_circ", unique: true
   end
 
-  create_table "aci_ciudades_localidades", primary_key: "id_ciudad", force: :cascade do |t|
+  create_table "aci_ciudades_localidades", primary_key: "id_ciudad", id: :bigint, default: -> { "nextval('ciudades_localidades_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "nombre_ciudad", null: false
     t.bigint "id_pais", null: false
   end
 
-  create_table "aci_clientes", primary_key: "id_natriff", force: :cascade do |t|
+  create_table "aci_clientes", primary_key: "id_natriff", id: :bigint, default: nil, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -117,29 +117,31 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.date "fecha_nac", null: false
     t.string "direccion", null: false
     t.string "tipo", limit: 1, null: false
+    t.index ["email"], name: "index_clientes_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_clientes_on_reset_password_token", unique: true
     t.check_constraint "(genero)::text = ANY (ARRAY[('M'::character varying)::text, ('F'::character varying)::text, ('O'::character varying)::text])", name: "genero_cliente"
     t.check_constraint "(tipo)::text = ANY (ARRAY[('N'::character varying)::text, ('J'::character varying)::text])", name: "tipo_cliente"
   end
 
-  create_table "aci_detalles_servicios", primary_key: "id_servicio", force: :cascade do |t|
+  create_table "aci_detalles_servicios", primary_key: "id_servicio", id: :bigint, default: -> { "nextval('detalles_servicios_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "tipo", null: false
     t.text "descripcion", null: false
     t.string "comida"
     t.bigint "id_paquete", null: false
   end
 
-  create_table "aci_empresas_proveedoras", primary_key: "id_proveedor", force: :cascade do |t|
+  create_table "aci_empresas_proveedoras", primary_key: "id_proveedor", id: :bigint, default: -> { "nextval('empresas_proveedoras_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "nombre_proveedor", limit: 40, null: false
     t.string "tipo_proveedor", null: false
   end
 
-  create_table "aci_forma_pagos", primary_key: "id_forma", force: :cascade do |t|
+  create_table "aci_forma_pagos", primary_key: "id_forma", id: :bigint, default: -> { "nextval('forma_pagos_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "tipo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "nro_presup", null: false
     t.bigint "id_metodo", null: false
-    t.check_constraint "(tipo)::text = ANY (ARRAY[('TarjetaC'::character varying)::text, ('TarjetaD'::character varying)::text, ('Cta'::character varying)::text, ('Zelle'::character varying)::text])", name: "tipo_c"
+    t.check_constraint "(tipo)::text = ANY ((ARRAY['TarjetaC'::character varying, 'TarjetaD'::character varying, 'Cta'::character varying, 'Zelle'::character varying])::text[])", name: "tipo_c"
   end
 
   create_table "aci_hist_precios", primary_key: "fecha_inicio", id: :date, force: :cascade do |t|
@@ -162,35 +164,35 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.bigint "id_itinerario_c", null: false
   end
 
-  create_table "aci_metodos_pago", force: :cascade do |t|
+  create_table "aci_metodos_pago", id: :bigint, default: -> { "nextval('metodos_pago_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "numero"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "aci_ofertas", primary_key: "id_oferta", force: :cascade do |t|
+  create_table "aci_ofertas", primary_key: "id_oferta", id: :bigint, default: -> { "nextval('ofertas_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "nombre_oferta", limit: 40, null: false
     t.integer "porcentaje", limit: 2, null: false
     t.string "tipo_persona", limit: 20, null: false
     t.date "fecha_inicial", null: false
     t.date "fecha_final"
     t.bigint "id_agencias", null: false
-    t.check_constraint "(tipo_persona)::text = ANY (ARRAY[('Adultos'::character varying)::text, ('Niños'::character varying)::text, ('Tercera Edad'::character varying)::text])", name: "tipo_persona_c"
+    t.check_constraint "(tipo_persona)::text = ANY ((ARRAY['Adultos'::character varying, 'Niños'::character varying, 'Tercera Edad'::character varying])::text[])", name: "tipo_persona_c"
   end
 
-  create_table "aci_paises", primary_key: "id_pais", force: :cascade do |t|
+  create_table "aci_paises", primary_key: "id_pais", id: :bigint, default: -> { "nextval('paises_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "nombre_pais", null: false
     t.string "continente", limit: 10, null: false
     t.string "region", null: false
     t.string "nacionalidad", limit: 20, null: false
   end
 
-  create_table "aci_paquete_contratos", primary_key: "nro_presupuesto", force: :cascade do |t|
+  create_table "aci_paquete_contratos", primary_key: "nro_presupuesto", id: :bigint, default: -> { "nextval('paquete_contratos_id_seq'::regclass)" }, force: :cascade do |t|
     t.date "fecha_emision", null: false
     t.decimal "total_calculado", null: false
     t.date "fecha_salida", null: false
-    t.integer "nro_factura", null: false
+    t.integer "nro_factura", default: -> { "nextval('paquete_contratos_fact_seq'::regclass)" }, null: false
     t.string "email_contacto", null: false
     t.datetime "created_at", precision: 6, null: false
     t.bigint "nro_registro", null: false
@@ -198,7 +200,7 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.bigint "id_asesor", null: false
   end
 
-  create_table "aci_paquetes", force: :cascade do |t|
+  create_table "aci_paquetes", id: :bigint, default: -> { "nextval('paquetes_id_seq'::regclass)" }, force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "nombre_paquete", limit: 60, null: false
@@ -208,7 +210,7 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.bigint "id_agencia", null: false
   end
 
-  create_table "aci_participantes", primary_key: "id_participante", force: :cascade do |t|
+  create_table "aci_participantes", primary_key: "id_participante", id: :bigint, default: -> { "nextval('participantes_id_seq'::regclass)" }, force: :cascade do |t|
     t.integer "nro_equipo", limit: 2
     t.integer "posicion", limit: 2
     t.bigint "id_rally", null: false
@@ -222,7 +224,7 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.bigint "id_viajero", null: false
   end
 
-  create_table "aci_premios", primary_key: "id_premio", force: :cascade do |t|
+  create_table "aci_premios", primary_key: "id_premio", id: :bigint, default: -> { "nextval('premios_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "nombre_premio", null: false
     t.string "puesto", null: false
     t.text "descripcion", null: false
@@ -230,7 +232,7 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.bigint "id_particpante", null: false
   end
 
-  create_table "aci_rallies", primary_key: "id_rally", force: :cascade do |t|
+  create_table "aci_rallies", primary_key: "id_rally", id: :bigint, default: -> { "nextval('rallies_id_seq'::regclass)" }, force: :cascade do |t|
     t.date "created_at", null: false
     t.string "nombre_rally", null: false
     t.date "fecha_final", null: false
@@ -239,20 +241,20 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.integer "cupos_totales", limit: 2, null: false
   end
 
-  create_table "aci_registro_clientes", primary_key: "nro_registro", force: :cascade do |t|
+  create_table "aci_registro_clientes", primary_key: "nro_registro", id: :bigint, default: -> { "nextval('registro_clientes_id_seq'::regclass)" }, force: :cascade do |t|
     t.date "fecha_registro", null: false
     t.bigint "id_agencia", null: false
     t.bigint "id_natriff", null: false
   end
 
-  create_table "aci_registros_viajeros", primary_key: "nro_registro", force: :cascade do |t|
+  create_table "aci_registros_viajeros", primary_key: "nro_registro", id: :bigint, default: -> { "nextval('registros_viajeros_id_seq'::regclass)" }, force: :cascade do |t|
     t.date "fecha_registro", null: false
     t.bigint "id_viajero", null: false
     t.bigint "id_agencia", null: false
   end
 
   create_table "aci_servicios_hoteles", id: false, force: :cascade do |t|
-    t.bigint "id_servicio", null: false
+    t.bigint "id_servicio", default: -> { "nextval('servicios_hoteles_id_seq'::regclass)" }, null: false
     t.bigint "id_hotel", null: false
   end
 
@@ -264,7 +266,7 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.index ["agencia2_id"], name: "index_socios_on_agencia2_id"
   end
 
-  create_table "aci_valoraciones", primary_key: "id_valoracion", force: :cascade do |t|
+  create_table "aci_valoraciones", primary_key: "id_valoracion", id: :bigint, default: -> { "nextval('valoraciones_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "pais_favorito", null: false
     t.string "ciudad_favorita", null: false
     t.string "atraccion_favorita", null: false
@@ -274,10 +276,10 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.bigint "id_atraccion"
     t.bigint "id_pais"
     t.bigint "id_ciudad"
-    t.check_constraint "(tipo)::bpchar = ANY (ARRAY['P'::bpchar, 'C'::bpchar, 'A'::bpchar])", name: "tipo_c"
+    t.check_constraint "tipo = ANY (ARRAY['P'::bpchar, 'C'::bpchar, 'A'::bpchar])", name: "tipo_c"
   end
 
-  create_table "aci_viajeros", primary_key: "id_viajero", force: :cascade do |t|
+  create_table "aci_viajeros", primary_key: "id_viajero", id: :bigint, default: nil, force: :cascade do |t|
     t.string "primer_nombre", null: false
     t.string "segundo_nombre"
     t.string "primer_apellido", null: false
@@ -287,104 +289,12 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
     t.string "correo_viajero", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.check_constraint "(genero)::text = ANY (ARRAY[('M'::character varying)::text, ('F'::character varying)::text, ('O'::character varying)::text])", name: "genero_c"
+    t.check_constraint "(genero)::text = ANY ((ARRAY['M'::character varying, 'F'::character varying, 'O'::character varying])::text[])", name: "genero_c"
   end
 
   create_table "aci_viajes_compras", id: false, force: :cascade do |t|
     t.bigint "nro_presup", null: false
     t.bigint "nro_reg_v", null: false
-  end
-
-  create_table "agencies", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.serial "id_agencia", null: false
-    t.string "nombre_agencia", limit: 35, null: false
-    t.string "url", limit: 100, null: false
-    t.string "alcance", limit: 15, null: false
-    t.text "descripcion", null: false
-    t.string "tipo", limit: 25, null: false
-  end
-
-  create_table "bancos", force: :cascade do |t|
-    t.string "nombre_banco"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "clientes", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "id_natrif"
-    t.string "nombre"
-    t.string "segundo_nombre"
-    t.string "primer_apellido"
-    t.string "segundo_apellido"
-    t.string "genero"
-    t.date "fecha_nac"
-    t.string "direccion"
-    t.string "tipo"
-    t.index ["email"], name: "index_clientes_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_clientes_on_reset_password_token", unique: true
-  end
-
-  create_table "forma_pagos", force: :cascade do |t|
-    t.string "tipo"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "metodos_pago", primary_key: "id_metodo", force: :cascade do |t|
-    t.string "tipo"
-    t.string "numero"
-    t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "paquete_contratos", force: :cascade do |t|
-    t.integer "nro_presupuesto"
-    t.date "fecha_emision"
-    t.decimal "total_calculado"
-    t.date "fecha_salida"
-    t.integer "nro_factura"
-    t.string "email_contacto"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "paquetes", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "rallies", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "registro_clientes", force: :cascade do |t|
-    t.integer "nro_registro"
-    t.date "fecha_registro"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "viajeros", primary_key: "id_viajero", force: :cascade do |t|
-    t.string "primer_nombre"
-    t.string "segundo_nombre"
-    t.string "primer_apellido"
-    t.string "segundo_apellido"
-    t.string "genero"
-    t.date "fecha_nacimiento"
-    t.string "correo_viajero"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "aci_agencias_rallies", "aci_agencies", column: "id_agencia", name: "agencia_rallies_fk_a", on_update: :cascade, on_delete: :cascade
@@ -409,6 +319,8 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
   add_foreign_key "aci_hist_precios", "aci_paquetes", column: "id_paquete", name: "paquetes_precios_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_itinerarios", "aci_ciudades_localidades", column: "id_ciudades", primary_key: "id_ciudad", name: "ciudades_itinerarios_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_itinerarios", "aci_paquetes", column: "id_paquetes", name: "paquete_itinerario_fk", on_update: :cascade, on_delete: :restrict
+  add_foreign_key "aci_itinerarios_atracciones", "aci_atracciones", column: "id_atracciones", primary_key: "id_atraccion", name: "atracciones_fk", on_update: :cascade, on_delete: :restrict
+  add_foreign_key "aci_itinerarios_atracciones", "aci_itinerarios", column: "id_itinerario_p", primary_key: "id_paquetes", name: "itinerario_fk", on_update: :cascade
   add_foreign_key "aci_ofertas", "aci_agencies", column: "id_agencias", name: "ofertas_agencias_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_paquete_contratos", "aci_asesores", column: "id_asesor", primary_key: "id_asesor", name: "contrato_asesor_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_paquete_contratos", "aci_paquetes", column: "id_paquete", name: "paquete_fk", on_update: :cascade, on_delete: :restrict
@@ -426,6 +338,7 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
   add_foreign_key "aci_registros_viajeros", "aci_viajeros", column: "id_viajero", primary_key: "id_viajero", name: "viajero_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_servicios_hoteles", "aci_alojamientos_hoteles", column: "id_servicio", primary_key: "id_hotel", name: "hotel_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_servicios_hoteles", "aci_detalles_servicios", column: "id_servicio", primary_key: "id_servicio", name: "servicio_fk", on_update: :cascade, on_delete: :restrict
+  add_foreign_key "aci_socios", "aci_agencies", column: "id_agencia", name: "socios_agencias_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_valoraciones", "aci_atracciones", column: "id_atraccion", primary_key: "id_atraccion", name: "valoraciones_atracc_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_valoraciones", "aci_ciudades_localidades", column: "id_ciudad", primary_key: "id_ciudad", name: "valoraciones_ciudades_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_valoraciones", "aci_paises", column: "id_pais", primary_key: "id_pais", name: "valoraciones_pais_fk", on_update: :cascade, on_delete: :restrict

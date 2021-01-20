@@ -19,7 +19,7 @@ class AgenciesController < ApplicationController
 
   # GET /agencies/1/edit
   def edit
-    @agency = Agency.find(params[:id])
+    
   end
 
   # POST /agencies
@@ -56,7 +56,7 @@ class AgenciesController < ApplicationController
   # DELETE /agencies/1
   # DELETE /agencies/1.json
   def destroy
-    @agencies.destroy
+    @agency.destroy
     respond_to do |format|
       format.html { redirect_to agencies_url, notice: 'Agency was successfully destroyed.' }
       format.json { head :no_content }
@@ -67,7 +67,7 @@ class AgenciesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_agency
-      @agencies = Agency.find(params[:id])
+      @agency = Agency.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
