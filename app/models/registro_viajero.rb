@@ -3,4 +3,5 @@ class RegistroViajero < ApplicationRecord
     has_many :viaje_compras
     has_many :paquete_contratos, :through => :viaje_compras
     belongs_to :viajero
+    belongs_to :agency
 end
