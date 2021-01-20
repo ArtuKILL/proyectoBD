@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2021_01_20_005022) do
-=======
 ActiveRecord::Schema.define(version: 2021_01_20_040927) do
->>>>>>> 1c271d7692474d08c68a834fbe524ee7fe299391
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -262,10 +258,12 @@ ActiveRecord::Schema.define(version: 2021_01_20_040927) do
 
   create_table "socios", primary_key: "fecha_inicial", id: :date, force: :cascade do |t|
     t.date "fecha_final"
+    t.bigint "agency_id", null: false
     t.bigint "agencia1_id"
     t.bigint "agencia2_id"
     t.index ["agencia1_id"], name: "index_socios_on_agencia1_id"
     t.index ["agencia2_id"], name: "index_socios_on_agencia2_id"
+    t.index ["agency_id"], name: "index_socios_on_agency_id"
   end
 
   create_table "valoraciones", primary_key: "id_valoracion", id: :bigint, default: nil, force: :cascade do |t|
@@ -333,10 +331,6 @@ ActiveRecord::Schema.define(version: 2021_01_20_040927) do
   add_foreign_key "registros_viajeros", "viajeros", column: "id_viajero", primary_key: "id_viajero", name: "viajero_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "servicios_hoteles", "alojamientos_hoteles", column: "id_servicio", primary_key: "id_hotel", name: "hotel_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "servicios_hoteles", "detalles_servicios", column: "id_servicio", primary_key: "id_servicio", name: "servicio_fk", on_update: :cascade, on_delete: :restrict
-<<<<<<< HEAD
   add_foreign_key "socios", "agencies"
-  add_foreign_key "socios", "agencies", column: "id_agencia", name: "socios_agencias_fk", on_update: :cascade, on_delete: :restrict
-=======
->>>>>>> 1c271d7692474d08c68a834fbe524ee7fe299391
   add_foreign_key "viajes_compras", "paquete_contratos", column: "nro_presup", primary_key: "nro_presupuesto", name: "contrato_fk", on_update: :cascade, on_delete: :restrict
 end
