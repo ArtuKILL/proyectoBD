@@ -1,0 +1,2 @@
+class AreaintE < ApplicationRecord
+end

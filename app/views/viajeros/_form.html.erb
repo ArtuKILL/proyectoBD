@@ -1,0 +1,52 @@
+<%= form_with(model: viajero) do |form| %>
+  <% if viajero.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(viajero.errors.count, "error") %> prohibited this viajero from being saved:</h2>
+
+      <ul>
+        <% viajero.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :primer_nombre %>
+    <%= form.text_field :primer_nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :segundo_nombre %>
+    <%= form.text_field :segundo_nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :primer_apellido %>
+    <%= form.text_field :primer_apellido %>
+  </div>
+
+  <div class="field">
+    <%= form.label :segundo_apellido %>
+    <%= form.text_field :segundo_apellido %>
+  </div>
+
+  <div class="field">
+    <%= form.label :genero %>
+    <%= form.text_field :genero %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fecha_nacimiento %>
+    <%= form.date_select :fecha_nacimiento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :correo_viajero %>
+    <%= form.text_field :correo_viajero %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

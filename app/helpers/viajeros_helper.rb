@@ -1,0 +1,2 @@
+module ViajerosHelper
+end

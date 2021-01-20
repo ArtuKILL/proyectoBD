@@ -1,8 +1,22 @@
-<h1>Home</h1>
 
+<div class="grid-x">
+<%= image_tag("tumblr_mcsgcn3LEq1qdu9b3o1_1280.jpg", :class => 'full-width') %>
+</div>
 
-<div class="grid-x grid-margin-x">
-    <div class="cell medium 6">
+<br>
+<br>
+
+<div class="grid-x ">
+    <div class="cell large-2"></div>
+    <div class="cell large-8">
+            <%= render 'agencies/agenciesdetails' %>
+      </div>
+    <div class="cell large-2"></div>
+</div>
+
+<!-- <div class="grid-x ">
+    <div class="cell large-2"></div>
+    <div class="cell large-8">
         <div class="callout secondary radius bordered shadow">
             <h4>Modelo: <%= @titulo%></h4>
             <ul>
@@ -14,4 +28,5 @@
             </ul>
         </div>
     </div>
-</div>
+    <div class="cell large-2"></div>
+</div> -->

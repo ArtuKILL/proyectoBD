@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nro_presupuesto: 1
+  fecha_emision: 2021-01-07
+  total_calculado: 9.99
+  fecha_salida: 2021-01-07
+  nro_factura: 1
+  email_contacto: MyString
+
+two:
+  nro_presupuesto: 1
+  fecha_emision: 2021-01-07
+  total_calculado: 9.99
+  fecha_salida: 2021-01-07
+  nro_factura: 1
+  email_contacto: MyString

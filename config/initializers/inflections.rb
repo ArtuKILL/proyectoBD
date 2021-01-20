@@ -14,3 +14,18 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.clear :all
+
+   inflect.plural /$/, 's'
+  # inflect.plural /([^djlnrs])([A-Z]$)/, '\1s\2'
+  inflect.plural /([djlnrs])$/, '\1es\2'
+  inflect.plural /(.*)z([A-Z]|_|$)$/i, '\1ces\2'
+  inflect.plural /([^y]|qu)y$/i, '\1ies'
+  inflect.singular /([^djlnrs])s([A-Z]|_|$)/, '\1\2'
+  inflect.singular /([djlnrs])es([A-Z]|_|$)/, '\1\2'
+  inflect.singular /(.*)ces([A-Z]|_|$)$/i, '\1z\2'
+  inflect.singular /([^y])ies$/i, '\1y'
+  #inflect.irregular('el', 'los')
+end

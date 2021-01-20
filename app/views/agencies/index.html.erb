@@ -1,24 +1,45 @@
-<p id="notice"><%= notice %></p>
+<div class="grid-x">
+    <div class="cell large-2"></div>
+    <div class="cell large-8 title-form">
+        <br>
+        <h1 class="title">Administración de Agencias</h1>
+        <hr class="line">
+    </div>
+    <div class="cell large-2"></div>
+</div>
 
-<h1>Agencies</h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="grid-x">
+  <div class="cell large-4 boxx-rounded"></div>
+  <div class="cell large-1 "></div>
+  <div class="cell large-7"> 
+    <div class="grid-x text">
+    <div class="cell large-5">
+      <%= button_to "Agregar Agencia", {action: 'new'}, class: "button expanded rounded size" %>
+    </div>
+    <div class="cell large-2"></div>
+    <div class="cell large-5">
+      <%= button_to "Editar Agencia", { action: "new" }, class: "button expanded rounded size" %>
+    </div>
+    </div>
+    <br>
+    <br>
+    <div class="grid-x ">
+      <div class="cell large-1"></div>
+      <div class="cell large-10">
+          <%= render  "agencies/agenciescolumn" %>
+      </div>
+      <div class="cell large-1"></div>
+    </div>
+  </div>
+</div>
 
-  <tbody>
-    <% @agencies.each do |agency| %>
-      <tr>
-        <td><%= link_to 'Show', agency %></td>
-        <td><%= link_to 'Edit', edit_agency_path(agency) %></td>
-        <td><%= link_to 'Destroy', agency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
 

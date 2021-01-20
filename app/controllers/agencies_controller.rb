@@ -4,7 +4,7 @@ class AgenciesController < ApplicationController
   # GET /agencies
   # GET /agencies.json
   def index
-    @agencies = Agency.all
+    @agencies = Agency.all.select(:nombre_agencia)
   end
 
   # GET /agencies/1
@@ -19,6 +19,7 @@ class AgenciesController < ApplicationController
 
   # GET /agencies/1/edit
   def edit
+    @agencies = Agency.find(params[:id])
   end
 
   # POST /agencies
@@ -61,6 +62,7 @@ class AgenciesController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_agency
@@ -69,6 +71,6 @@ class AgenciesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def agency_params
-      params.fetch(:agency, {})
+      params.fetch(:agency, {}).permit(:nombre_agencia, :url, :alcance, :tipo, :descripcion)
     end
 end

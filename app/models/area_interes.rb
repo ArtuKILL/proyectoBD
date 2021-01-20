@@ -1,0 +1,2 @@
+class AreaInteres < ApplicationRecord
+end
