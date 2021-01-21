@@ -63,8 +63,14 @@ class AgenciesController < ApplicationController
     end
   end
 
-  def crear_registro_cliente 
-    @agency.clientes.append(current_cliente)
+  def crear_registro_cliente
+    registro = RegistroCliente.new(fecha_registro: Date.current) 
+    @agency = Agency.find(params[:format])
+    registro.agency = @agency
+    registro.cliente = current_cliente
+    current_cliente.registro_clientes.append(registro)
+    @agency.registro_clientes.append(registro)
+    registro.save!
   end
 
   private

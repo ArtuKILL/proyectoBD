@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'test/index'
   root 'agencies#index'
   post 'agencies/crear_registro_cliente'
-  get 'agencies/:id', to: 'agencies#crear_registro_cliente'
+  #get 'agencies/:id', to: 'agencies#crear_registro_cliente'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
