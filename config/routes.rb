@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :socios
+ 
   resources :viajeros
   resources :rallies
   resources :paquetes
@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     registrations: 'clientes/registrations'
   }
 
+  resources :agencies do 
+    resources :socios
+  end
 
   get 'home/index'
   get 'test/index'
