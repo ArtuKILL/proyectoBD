@@ -1,7 +1,6 @@
 
 <br>
 <br>
-
 <div class="grid-x">
     <div class="cell large-5">
         <%= image_tag("viajes-el-corte-ingles_img81859t0.jpg", :class => 'rounded-a')%>
@@ -45,19 +44,41 @@
             <div class="cell large-9">
                 <p class="text size"><i><%= @agency.url %></i></p>
             </div>
+
+            <% if cliente_signed_in? && !@agency.clientes.include?(current_cliente)%>
+            <div class="cell large-9">
+                <%= button_to agencies_crear_registro_cliente_url(@agency.id) do%>
+                    <button class="button-hover-like button"><span>Registrarse</span><i class="fa fa-heart"></i></button>
+                <% end %>
+            </div>
+            <% end %>
         </div>
     </div>
 </div>
 
 <br>
 <hr>
+<div class="grid-x size">
+      <div class="cell large-5">
+            <p class="text size">Socios de esta Agencia:</p>
+            <hr>
+            <ul>
+             <% @agency.socio.each do |socio| %> 
 
-<%=render "socios/form" , socio: @agency.socios.build%>
-
-<ul>
-   <% @agency.socio.each do |socio| %> 
-
-            <li><%=  socio.agencia2.nombre_agencia %></li>
+                <li><%=  socio.agencia2.nombre_agencia %></li>
             
-    <% end %>
-</ul>
+            <% end %>
+            </ul>
+
+
+      </div>
+      <div class="cell large-2"></div>
+      <div class="cell large-5 text">
+      <p class="text size">Agregar Socios:</p>
+      <hr>
+        <%=render "socios/form" , socio: @agency.socios.build%>
+      </div>
+</div>
+
+
+

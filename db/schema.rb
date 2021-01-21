@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_01_20_092940) do
 =======
 <<<<<<< HEAD
@@ -19,6 +20,9 @@ ActiveRecord::Schema.define(version: 2021_01_20_092940) do
 ActiveRecord::Schema.define(version: 2021_01_18_195456) do
 >>>>>>> main
 >>>>>>> 3eeb3f7bbb4f2ed74dcb13b5fca6bc7b09bc9982
+=======
+ActiveRecord::Schema.define(version: 2021_01_18_195456) do
+>>>>>>> a7d31868333739b828ba503726c5eae4da7e072a
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -267,6 +271,7 @@ ActiveRecord::Schema.define(version: 2021_01_18_195456) do
   create_table "aci_socios", primary_key: "fecha_inicial", id: :date, force: :cascade do |t|
     t.date "fecha_final"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
@@ -286,6 +291,10 @@ ActiveRecord::Schema.define(version: 2021_01_18_195456) do
 >>>>>>> 872c4888ccdb40abb8fdf59d0369bb71e57bcfcb
 >>>>>>> main
 >>>>>>> 3eeb3f7bbb4f2ed74dcb13b5fca6bc7b09bc9982
+=======
+    t.bigint "agencia1_id"
+    t.bigint "agencia2_id"
+>>>>>>> a7d31868333739b828ba503726c5eae4da7e072a
   end
 
   create_table "aci_valoraciones", primary_key: "id_valoracion", force: :cascade do |t|
@@ -450,6 +459,11 @@ ActiveRecord::Schema.define(version: 2021_01_18_195456) do
   add_foreign_key "aci_registros_viajeros", "aci_viajeros", column: "id_viajero", primary_key: "id_viajero", name: "viajero_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_servicios_hoteles", "aci_alojamientos_hoteles", column: "id_servicio", primary_key: "id_hotel", name: "hotel_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_servicios_hoteles", "aci_detalles_servicios", column: "id_servicio", primary_key: "id_servicio", name: "servicio_fk", on_update: :cascade, on_delete: :restrict
+<<<<<<< HEAD
+=======
+  add_foreign_key "aci_socios", "aci_agencies", column: "agencia1_id", name: "socios_agencias_fk", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "aci_socios", "aci_agencies", column: "agencia2_id", name: "socios_agencias_fk2", on_update: :cascade, on_delete: :cascade
+>>>>>>> a7d31868333739b828ba503726c5eae4da7e072a
   add_foreign_key "aci_valoraciones", "aci_atracciones", column: "id_atraccion", primary_key: "id_atraccion", name: "valoraciones_atracc_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_valoraciones", "aci_ciudades_localidades", column: "id_ciudad", primary_key: "id_ciudad", name: "valoraciones_ciudades_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_valoraciones", "aci_paises", column: "id_pais", primary_key: "id_pais", name: "valoraciones_pais_fk", on_update: :cascade, on_delete: :restrict

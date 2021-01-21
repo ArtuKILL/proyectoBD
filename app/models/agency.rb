@@ -9,7 +9,7 @@ class Agency < ApplicationRecord
     has_many :paquetes
     has_many :a_p_hists
     has_many :ofertas
-    has_many :registro_clientes
+    has_many :registro_clientes, :foreign_key =>:id_agencia
     has_many :empresa_proveedores, :through => :a_p_hists
     has_many :clientes, :through => :registro_clientes
     has_many :metodo_pagos
@@ -17,7 +17,8 @@ class Agency < ApplicationRecord
     has_many :agencia_rallies
     has_many :rallies, :through => :agencia_rallies
     has_many :asesores
-    has_many :areaint_es  
+    has_many :viajeros, :through => :registro_clientes
+      
     #accepts_nested_attributes_for :socios
 
     validates :nombre_agencia, :url, :descripcion, :alcance, :tipo, presence: true
