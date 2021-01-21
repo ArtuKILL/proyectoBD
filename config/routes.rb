@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   resources :paquetes
   resources :paquete_contratos
   resources :agencies
-  devise_for :clientes
+
+  devise_for :clientes, controllers: {
+    registrations: 'clientes/registrations'
+  }
+
 
   get 'home/index'
   get 'test/index'
