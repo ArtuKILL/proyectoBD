@@ -52,12 +52,12 @@
 <br>
 <hr>
 
-<%=render "socios/form"%>
+<%=render "socios/form" , socio: @agency.socios.build%>
 
 <ul>
    <% @agency.socio.each do |socio| %> 
 
             <li><%=  socio.agencia2.nombre_agencia %></li>
-           
+            
     <% end %>
 </ul>

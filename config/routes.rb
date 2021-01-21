@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   }
 
   resources :agencies do 
-    resources :socios
+    resources :socios,param: :fecha_inicial
   end
 
   get 'home/index'
