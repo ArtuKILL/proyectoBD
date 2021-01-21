@@ -10,7 +10,11 @@ class AgenciesController < ApplicationController
   # GET /agencies/1
   # GET /agencies/1.json
   def show
+<<<<<<< HEAD
    
+=======
+
+>>>>>>> 872c4888ccdb40abb8fdf59d0369bb71e57bcfcb
   end
 
   # GET /agencies/new
@@ -20,7 +24,6 @@ class AgenciesController < ApplicationController
 
   # GET /agencies/1/edit
   def edit
-    @agency = Agency.find(params[:id])
   end
 
   # POST /agencies
@@ -46,7 +49,7 @@ class AgenciesController < ApplicationController
     respond_to do |format|
       if @agency.update(agency_params)
         format.html { redirect_to @agency, notice: 'Agency was successfully updated.' }
-        format.json { render :show, status: :ok, location: @agencies }
+        format.json { render :show, status: :ok, location: @agency }
       else
         format.html { render :edit }
         format.json { render json: @agency.errors, status: :unprocessable_entity }
@@ -57,7 +60,7 @@ class AgenciesController < ApplicationController
   # DELETE /agencies/1
   # DELETE /agencies/1.json
   def destroy
-    @agencies.destroy
+    @agency.destroy
     respond_to do |format|
       format.html { redirect_to agencies_url, notice: 'Agency was successfully destroyed.' }
       format.json { head :no_content }
@@ -68,7 +71,7 @@ class AgenciesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_agency
-      @agencies = Agency.find(params[:id])
+      @agency = Agency.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
