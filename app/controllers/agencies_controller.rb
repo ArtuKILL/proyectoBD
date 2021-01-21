@@ -63,6 +63,9 @@ class AgenciesController < ApplicationController
     end
   end
 
+  def crear_registro_cliente 
+    @agency.clientes.append(current_cliente)
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
