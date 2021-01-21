@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  resources :socios
+ 
   resources :viajeros
   resources :rallies
   resources :paquetes
   resources :paquete_contratos
-  resources :agencies
+  resources :agencies do 
+    resources :socios
+  end
   devise_for :clientes
 
   get 'home/index'
