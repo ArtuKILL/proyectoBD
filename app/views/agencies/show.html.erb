@@ -66,6 +66,9 @@
              <% @agency.socio.each do |socio| %> 
 
                 <li><%=  socio.agencia2.nombre_agencia %></li>
+                <%= button_to agencies_cerrar_sociedad_url(socio.fecha_inicial) do%>
+                    <button class="button-hover-like button"><span>cerrar sociedad</span><i class="fa fa-heart"></i></button>
+                <% end %>
             
             <% end %>
             </ul>

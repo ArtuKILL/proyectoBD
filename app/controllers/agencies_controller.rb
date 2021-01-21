@@ -78,6 +78,17 @@ class AgenciesController < ApplicationController
      end
   end
 
+  def cerrar_sociedad
+    socio = Socio.find(params[:format])
+  
+    if socio.update_attribute(:fecha_final, Time.now)
+      flash[:notice] = "Sociedad cerrada"
+      redirect_to request.referer
+    else
+      redirect_to @agency, alert: "Ha ocurrido un error al registrarte en #{@agency.nombre_agencia}"
+     end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_agency
