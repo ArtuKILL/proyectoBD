@@ -239,18 +239,16 @@ class AddTablesPart5  < ActiveRecord::Migration[6.1]
     end
 
     create_table "aci_servicios_hoteles", id: false, force: :cascade do |t|
-      t.bigint "id_servicio", null: false #, default: -> { "nextval('servicios_hoteles_id_seq'::regclass)" } #FIXME: Arreglar
+      t.bigint "id_servicio", null: false #, default: -> { "nextval('servicios_hoteles_id_seq'::regclass)" } 
       t.bigint "id_hotel", null: false
     end
 
     create_table "aci_socios", primary_key: "fecha_inicial", id: :date, force: :cascade do |t|
       t.date "fecha_final"
-      t.bigint "agency_id", null: false
       t.bigint "agencia1_id"
       t.bigint "agencia2_id"
       t.index ["agencia1_id"], name: "index_socios_on_agencia1_id"
       t.index ["agencia2_id"], name: "index_socios_on_agencia2_id"
-      t.index ["agency_id"], name: "index_socios_on_agency_id"
     end
 
     create_table "aci_valoraciones", primary_key: "id_valoracion", id: :bigint, force: :cascade do |t| #, default: -> { "nextval('valoraciones_id_seq'::regclass)" }
@@ -307,8 +305,8 @@ class AddTablesPart5  < ActiveRecord::Migration[6.1]
       add_foreign_key "aci_itinerarios", "aci_ciudades_localidades", column: "id_ciudades", primary_key: "id_ciudad", name: "ciudades_itinerarios_fk", on_update: :cascade, on_delete: :restrict
       add_foreign_key "aci_itinerarios", "aci_paquetes", column: "id_paquetes", name: "paquete_itinerario_fk", on_update: :cascade, on_delete: :restrict
       # FIXME: Arreglar esto tambien
-      # add_foreign_key "aci_itinerarios_atracciones", "aci_atracciones", column: "id_atracciones", primary_key: "id_atraccion", name: "atracciones_fk", on_update: :cascade, on_delete: :restrict
-      # add_foreign_key "aci_itinerarios_atracciones", "aci_itinerarios", column: "id_itinerario_p", primary_key: "id_paquetes", name: "itinerario_fk", on_update: :cascade
+      add_foreign_key "aci_itinerarios_atracciones", "aci_atracciones", column: "id_atracciones", primary_key: "id_atraccion", name: "atracciones_fk", on_update: :cascade, on_delete: :restrict
+      add_foreign_key "aci_itinerarios_atracciones", "aci_itinerarios", column: "id_itinerario_p", primary_key: "id_paquetes", name: "itinerario_fk", on_update: :cascade
       add_foreign_key "aci_ofertas", "aci_agencies", column: "id_agencias", name: "ofertas_agencias_fk", on_update: :cascade, on_delete: :restrict
       add_foreign_key "aci_paquete_contratos", "aci_asesores", column: "id_asesor", primary_key: "id_asesor", name: "contrato_asesor_fk", on_update: :cascade, on_delete: :restrict
       add_foreign_key "aci_paquete_contratos", "aci_paquetes", column: "id_paquete", name: "paquete_fk", on_update: :cascade, on_delete: :restrict
