@@ -1,0 +1,117 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+
+
+<div class="grid-x">
+  <div class="cell large-2"></div>
+    <div class="cell large-8 text">
+      
+    
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "clientes/shared/error_messages", resource: resource %>
+      <div class="field">
+        <%= f.label :id_natriff, "Nro de identificación/Cédula:" %>
+        <%= f.text_field :id_natriff %>
+      </div>
+
+      <div class="field">
+        <%= f.label :nombre, "Primer nombre:" %>
+        <%= f.text_field :nombre %>
+      </div>
+
+      <div class="field">
+        <%= f.label :segundo_nombre, "Segundo Nombre:" %>
+        <%= f.text_field :segundo_nombre %>
+      </div>
+
+      <div class="field">
+        <%= f.label :primer_apellido, "Primer apellido:" %>
+        <%= f.text_field :primer_apellido %>
+      </div>
+
+      <div class="field">
+        <%= f.label :segundo_apellido, "Segundo apellido:" %>
+        <%= f.text_field :segundo_apellido %>
+      </div>
+
+      <div class="field">
+        <%= f.label :direccion, "Dirección:" %>
+        <%= f.text_field :direccion %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+        <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="grid-x">
+
+        <div class="cell large-2">
+          <%= f.label :genero, "Genero:" %>
+          <%= f.select :genero, [["Masculino","M"], ["Femenino","F"], ["Otro","O"]] %>
+
+          <%= f.label :tipo, "Tipo de Cliente:" %>
+          <%= f.select :tipo, [["natural","N"], ["Juridico","J"]]%>
+        </div>
+
+        <div class="cell large-2"></div>
+
+        <div class="cell large-8">
+          <%= f.label :fecha_nac, "Fecha de nacimiento:"%>
+
+
+          <div class="cell large-3">
+            <%=  f.date_select :fecha_nac %>
+          </div>
+
+          <div class="cell large-1"></div>
+        </div>
+
+        <br>
+        
+      </div>
+
+      <div class="field">
+        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+        <%= f.password_field :current_password, autocomplete: "current-password" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Actualizar", class: "button text size expanded rounded"%>
+      </div>
+      
+      <% end %>
+
+      <h3>Cancel my account</h3>
+
+      <p>Unhappy?
+        <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "hollow button alert text size rounded" %>
+      </p>
+
+      <%= link_to "Back", :back %>
+
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,92 @@
+<h2>Sign up</h2>
+
+<div class="grid-x">
+  <div class="cell large-2"></div>
+  <div class="cell large-8 text">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "clientes/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :id_natriff, "Nro de identificación/Cédula:" %>
+      <%= f.text_field :id_natriff %>
+    </div>
+
+    <div class="field">
+      <%= f.label :nombre, "Primer nombre:" %>
+      <%= f.text_field :nombre %>
+    </div>
+
+    <div class="field">
+      <%= f.label :segundo_nombre, "Segundo Nombre:" %>
+      <%= f.text_field :segundo_nombre %>
+    </div>
+
+    <div class="field">
+      <%= f.label :primer_apellido, "Primer apellido:" %>
+      <%= f.text_field :primer_apellido %>
+    </div>
+
+    <div class="field">
+      <%= f.label :segundo_apellido, "Segundo apellido:" %>
+      <%= f.text_field :segundo_apellido %>
+    </div>
+
+    <div class="field">
+      <%= f.label :direccion, "Dirección:" %>
+      <%= f.text_field :direccion %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div class="grid-x">
+
+      <div class="cell large-2">
+        <%= f.label :genero, "Genero:" %>
+        <%= f.select :genero, [["Masculino","M"], ["Femenino","F"], ["Otro","O"]] %>
+
+        <%= f.label :tipo, "Tipo de Cliente:" %>
+        <%= f.select :tipo, [["natural","N"], ["Juridico","J"]]%>
+      </div>
+
+      <div class="cell large-2"></div>
+
+      <div class="cell large-8">
+        <%= f.label :fecha_nac, "Fecha de nacimiento:"%>
+      
+
+          <div class="cell large-3">
+            <%=  f.date_select :fecha_nac %>
+          </div>
+
+          <div class="cell large-1"></div>
+      </div>
+
+      <br>
+      <div class="action ">
+        <%= f.submit "Registrate", class: "button text size expanded rounded"%>
+        <div class="cell large-3"></div>
+      </div>
+    </div>
+    <% end %>
+  
+    
+  </div>
+</div>
+
+<%= render "clientes/shared/links" %>

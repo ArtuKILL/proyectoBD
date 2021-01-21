@@ -24,8 +24,11 @@ class ViajerosController < ApplicationController
   # POST /viajeros
   # POST /viajeros.json
   def create
+    dia = params[:date][:day]
+    mes = params[:date][:month]
+    año = params[:date][:year]
     @viajero = Viajero.new(viajero_params)
-
+    @viajero.fecha_nacimiento = Date.parse("#{dia}/#{mes}/#{año}")
     respond_to do |format|
       if @viajero.save
         format.html { redirect_to @viajero, notice: 'Viajero was successfully created.' }

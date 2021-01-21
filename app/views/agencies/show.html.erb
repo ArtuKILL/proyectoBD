@@ -53,3 +53,11 @@
 <hr>
 
 <%=render "socios/form"%>
+
+<ul>
+   <% @agency.socio.each do |socio| %> 
+
+            <li><%=  socio.agencia2.nombre_agencia %></li>
+           
+    <% end %>
+</ul>
