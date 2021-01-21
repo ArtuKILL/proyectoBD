@@ -10,11 +10,7 @@ class AgenciesController < ApplicationController
   # GET /agencies/1
   # GET /agencies/1.json
   def show
-<<<<<<< HEAD
    
-=======
-
->>>>>>> 872c4888ccdb40abb8fdf59d0369bb71e57bcfcb
   end
 
   # GET /agencies/new

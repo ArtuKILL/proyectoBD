@@ -1,4 +1,4 @@
-<%= form_with(model:[@agencies,@agencies.socios.build],local:true) do |form| %>
+<%= form_with(model:[@agency,@agency.socios.build],local:true) do |form| %>
         <%= form.date_field :fecha_inicial, class:"form-control input-sm" %>
          <%= form.date_field :fecha_final, class:"form-control input-sm" %>
          <%= form.collection_select :agencia2_id, Agency.order(:nombre_agencia), :id, :nombre_agencia %>
