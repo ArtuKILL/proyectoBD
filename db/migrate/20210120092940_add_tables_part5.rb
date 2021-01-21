@@ -305,8 +305,8 @@ class AddTablesPart5  < ActiveRecord::Migration[6.1]
       add_foreign_key "aci_itinerarios", "aci_ciudades_localidades", column: "id_ciudades", primary_key: "id_ciudad", name: "ciudades_itinerarios_fk", on_update: :cascade, on_delete: :restrict
       add_foreign_key "aci_itinerarios", "aci_paquetes", column: "id_paquetes", name: "paquete_itinerario_fk", on_update: :cascade, on_delete: :restrict
       # FIXME: Arreglar esto tambien
-      add_foreign_key "aci_itinerarios_atracciones", "aci_atracciones", column: "id_atracciones", primary_key: "id_atraccion", name: "atracciones_fk", on_update: :cascade, on_delete: :restrict
-      add_foreign_key "aci_itinerarios_atracciones", "aci_itinerarios", column: "id_itinerario_p", primary_key: "id_paquetes", name: "itinerario_fk", on_update: :cascade
+     # add_foreign_key "aci_itinerarios_atracciones", "aci_atracciones", column: "id_atracciones", primary_key: "id_atraccion", name: "atracciones_fk", on_update: :cascade, on_delete: :restrict
+      #add_foreign_key "aci_itinerarios_atracciones", "aci_itinerarios", column: "id_itinerario_p", primary_key: "id_paquetes", name: "itinerario_fk", on_update: :cascade
       add_foreign_key "aci_ofertas", "aci_agencies", column: "id_agencias", name: "ofertas_agencias_fk", on_update: :cascade, on_delete: :restrict
       add_foreign_key "aci_paquete_contratos", "aci_asesores", column: "id_asesor", primary_key: "id_asesor", name: "contrato_asesor_fk", on_update: :cascade, on_delete: :restrict
       add_foreign_key "aci_paquete_contratos", "aci_paquetes", column: "id_paquete", name: "paquete_fk", on_update: :cascade, on_delete: :restrict
