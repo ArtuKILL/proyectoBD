@@ -43,12 +43,14 @@
             <div class="cell large-9">
                 <p class="text size"><i><%= @agency.url %></i></p>
             </div>
+
+            <% if cliente_signed_in? && !@agency.clientes.include?(current_cliente)%>
             <div class="cell large-9">
                 <%= button_to agencies_crear_registro_cliente_url(@agency.id) do%>
                     <button class="button-hover-like button"><span>Registrarse</span><i class="fa fa-heart"></i></button>
                 <% end %>
-                <%= params %>
             </div>
+            <% end %>
         </div>
     </div>
 </div>

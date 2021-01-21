@@ -59,7 +59,7 @@ class AgenciesController < ApplicationController
     @agency.destroy
     respond_to do |format|
       format.html { redirect_to agencies_url, notice: 'Agency was successfully destroyed.' }
-      format.json { head :no_content }
+      
     end
   end
 
@@ -70,7 +70,11 @@ class AgenciesController < ApplicationController
     registro.cliente = current_cliente
     current_cliente.registro_clientes.append(registro)
     @agency.registro_clientes.append(registro)
-    registro.save!
+    if registro.save
+      redirect_to @agency, notice: "Te has registrado en #{@agency.nombre_agencia}"
+    else
+      redirect_to @agency, alert: "Ha ocurrido un error al registrarte en #{@agency.nombre_agencia}"
+     end
   end
 
   private
@@ -83,4 +87,6 @@ class AgenciesController < ApplicationController
     def agency_params
       params.fetch(:agency, {}).permit(:id,:nombre_agencia, :url, :alcance, :tipo, :descripcion)
     end
+  
 end
+ 
