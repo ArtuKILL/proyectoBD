@@ -1,6 +1,22 @@
-<%= form_with(model:[@agency,@agency.socios.build],local:true) do |form| %>
-        <%= form.date_field :fecha_inicial, class:"form-control input-sm" %>
-         <%= form.date_field :fecha_final, class:"form-control input-sm" %>
-         <%= form.collection_select :agencia2_id, Agency.order(:nombre_agencia), :id, :nombre_agencia %>
-      <%= form.submit %>
-<% end %>
+
+<div class="grid-x size">
+      <div class="cell large-5">
+            <p class="text size">Socios de esta Agencia:</p>
+            <hr>
+      </div>
+      <div class="cell large-2"></div>
+      <div class="cell large-5 text">
+      <p class="text size">Agregar Socios:</p>
+      <hr>
+            <%= form_with(model:[@agency, @agency.socios.build], local:true) do |form| %>
+                  <%= form.date_field :fecha_inicial, class:"form-control input-sm" %>
+                  <%= form.date_field :fecha_final, class:"form-control input-sm" %>
+                  <%= form.collection_select :agencia2_id, Agency.order(:nombre_agencia), :id, :nombre_agencia,   {}  ,{:class => "size-letter"} %>
+                  <div class="grid-x">
+                        <div class="cell large-2"></div>
+                        <div class="cell large-8"><%= form.submit class: "button text size expanded rounded"%></div>
+                        <div class="cell large-2"></div>
+                  </div>
+            <% end %>
+      </div>
+</div>
