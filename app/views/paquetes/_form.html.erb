@@ -3,7 +3,7 @@
   <div class="cell large-2"></div>
   <div class="cell large-8 text">
 
-    <%= form_with(model:[@agency, paquete], local:true) do |form| %>
+    <%= form_with(model:[@agency, paquete]) do |form| %>
 
       <% if paquete.errors.any? %>
         <div id="error_explanation">

@@ -1,0 +1,43 @@
+<% @agencies.paquetes.each do |paquete| %>
+
+<div class="grid-x  boxx-rounded">
+    <div class="cell large-6">
+         <%= image_tag("tristan-colangelo-d4OnMIl5OYk-unsplash.jpg", :class => 'rounded-a')%>
+    </div>
+    <div class="cell large-1"></div>
+    <div class="cell large-5">
+        <h4 class="title"><%= paquete.nombre_paquete %></h4>
+        <p Class="text size"><%= paquete.descripcion %></p>
+        <br>
+        <div class="grid-x">
+        <div class="cell large-2"><img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im00NTMuMzMyMDMxIDUxMmgtMzk0LjY2NDA2MmMtMzIuMzYzMjgxIDAtNTguNjY3OTY5LTI2LjMwNDY4OC01OC42Njc5NjktNTguNjY3OTY5di0zNTJjMC0zMi4zNjMyODEgMjYuMzA0Njg4LTU4LjY2NDA2MiA1OC42Njc5NjktNTguNjY0MDYyaDM5NC42NjQwNjJjMzIuMzYzMjgxIDAgNTguNjY3OTY5IDI2LjMwMDc4MSA1OC42Njc5NjkgNTguNjY0MDYydjM1MmMwIDMyLjM2MzI4MS0yNi4zMDQ2ODggNTguNjY3OTY5LTU4LjY2Nzk2OSA1OC42Njc5Njl6bS0zOTQuNjY0MDYyLTQzNy4zMzIwMzFjLTE0LjY5OTIxOSAwLTI2LjY2Nzk2OSAxMS45NjQ4NDMtMjYuNjY3OTY5IDI2LjY2NDA2MnYzNTJjMCAxNC42OTkyMTkgMTEuOTY4NzUgMjYuNjY3OTY5IDI2LjY2Nzk2OSAyNi42Njc5NjloMzk0LjY2NDA2MmMxNC42OTkyMTkgMCAyNi42Njc5NjktMTEuOTY4NzUgMjYuNjY3OTY5LTI2LjY2Nzk2OXYtMzUyYzAtMTQuNjk5MjE5LTExLjk2ODc1LTI2LjY2NDA2Mi0yNi42Njc5NjktMjYuNjY0MDYyem0wIDAiLz48cGF0aCBkPSJtNDk2IDIwMi42Njc5NjloLTQ4MGMtOC44MzIwMzEgMC0xNi03LjE2Nzk2OS0xNi0xNnM3LjE2Nzk2OS0xNiAxNi0xNmg0ODBjOC44MzIwMzEgMCAxNiA3LjE2Nzk2OSAxNiAxNnMtNy4xNjc5NjkgMTYtMTYgMTZ6bTAgMCIvPjxwYXRoIGQ9Im0xMjIuNjY3OTY5IDEyOGMtOC44MzIwMzEgMC0xNi03LjE2Nzk2OS0xNi0xNnYtOTZjMC04LjgzMjAzMSA3LjE2Nzk2OS0xNiAxNi0xNnMxNiA3LjE2Nzk2OSAxNiAxNnY5NmMwIDguODMyMDMxLTcuMTY3OTY5IDE2LTE2IDE2em0wIDAiLz48cGF0aCBkPSJtMzg5LjMzMjAzMSAxMjhjLTguODMyMDMxIDAtMTYtNy4xNjc5NjktMTYtMTZ2LTk2YzAtOC44MzIwMzEgNy4xNjc5NjktMTYgMTYtMTZzMTYgNy4xNjc5NjkgMTYgMTZ2OTZjMCA4LjgzMjAzMS03LjE2Nzk2OSAxNi0xNiAxNnptMCAwIi8+PC9zdmc+" width="20px" /></div>
+        <div class="cell large-2">
+            <p class="text"><%= paquete.duracion_dias %></p>
+        </div>
+        <div class="cell large-4"></div>
+        <div class="cell large-4">
+            <p class="text">Para:</p>
+            <p class="text"><%= paquete.cant_personas %></p>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% end %>

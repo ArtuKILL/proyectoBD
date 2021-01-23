@@ -15,7 +15,7 @@ class PaquetesController < ApplicationController
 
   # GET /paquetes/new
   def new
-    @paquete = Paquete.new
+    @paquete = Paquete.new()
   end
 
   # GET /paquetes/1/edit
@@ -25,8 +25,7 @@ class PaquetesController < ApplicationController
   # POST /paquetes
   # POST /paquetes.json
   def create
-    @paquete = Paquete.new(paquete_params)
-
+    @paquete = @agency.paquetes.new()
     respond_to do |format|
       if @paquete.save
         format.html { redirect_to @agency, notice: 'Paquete was successfully created.' }
@@ -74,6 +73,6 @@ class PaquetesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def paquete_params
-      params.fetch(:paquete, {})
+      params.require(:paquete).permit(:nombre_paquete, :descripcion, :duracion_dias, :cant_personas, :id_agencia)
     end
 end
