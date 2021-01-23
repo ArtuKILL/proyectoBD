@@ -1,4 +1,13 @@
-<h2>Sign up</h2>
+<div class="grid-x">
+    <div class="cell large-2"></div>
+    <div class="cell large-8 title-form">
+        <br>
+        <h1 class="title">Registrar Cliente</h1>
+        <hr class="line">
+    </div>
+    <div class="cell large-2"></div>
+</div>
+
 
 <div class="grid-x">
   <div class="cell large-2"></div>
@@ -37,56 +46,48 @@
     </div>
 
     <div class="field">
-      <%= f.label :email %><br />
+      <%= f.label :email %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
     <div class="field">
       <%= f.label :password %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
+      <em>(<%= @minimum_password_length %> caracteres minimo)</em>
+      <% end %>
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br />
+      <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
     <div class="grid-x">
-
       <div class="cell large-2">
         <%= f.label :genero, "Genero:" %>
         <%= f.select :genero, [["Masculino","M"], ["Femenino","F"], ["Otro","O"]] %>
-
+        <br>
         <%= f.label :tipo, "Tipo de Cliente:" %>
         <%= f.select :tipo, [["natural","N"], ["Juridico","J"]]%>
       </div>
-
       <div class="cell large-2"></div>
-
       <div class="cell large-8">
         <%= f.label :fecha_nac , "Fecha de nacimiento:"%>
-      
-
-          <div class="cell large-3">
-            <%=  f.date_select :fecha_nac, start_year: 1900, end_year: 2002 %>
-          </div>
-
-          <div class="cell large-1"></div>
-      </div>
-
-      <br>
-      <div class="action ">
-        <%= f.submit "Registrate", class: "button text size expanded rounded"%>
-        <div class="cell large-3"></div>
+        <%=  f.date_select :fecha_nac, start_year: 1900, end_year: 2002 %>
       </div>
     </div>
-    <% end %>
-  
-    
-  </div>
+    <br>
+    <div class="actions">
+        <div class="grid-x">
+          <div class="cell large-3"></div>
+          <div class="cell large-6"><%= f.submit "Registrarse", class: "button text size expanded rounded"%></div>
+          <div class="cell large-3"></div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="cell large-1"></div>
+    <br>
 </div>
 
-<%= render "clientes/shared/links" %>

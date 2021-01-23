@@ -2,7 +2,6 @@ Rails.application.routes.draw do
  
   resources :viajeros
   resources :rallies
-  resources :paquetes
   resources :paquete_contratos
   resources :agencies
 
@@ -12,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :agencies do 
     resources :socios,param: :fecha_inicial
+    resources :paquetes
   end
 
   get 'home/index'

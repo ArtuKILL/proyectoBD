@@ -1,17 +1,49 @@
-<%= form_with(model: paquete) do |form| %>
-  <% if paquete.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(paquete.errors.count, "error") %> prohibited this paquete from being saved:</h2>
+<br>
+<div class="grid-x">
+  <div class="cell large-2"></div>
+  <div class="cell large-8 text">
 
-      <ul>
-        <% paquete.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <%= form_with(model:[@agency, paquete], local:true) do |form| %>
 
-  <div class="actions">
-    <%= form.submit %>
+      <% if paquete.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= pluralize(paquete.errors.count, "error") %> prohibited this paquete from being saved:</h2>
+
+        <ul>
+          <% paquete.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+        </div>
+      <% end %>
+
+      <%= form.label :nombre_paquete, "Nombre del Paquete:" %>
+      <%= form.text_field :nombre_paquete, class: "size-letter" %>
+      <%= form.label :descripcion, "Descrición del Paquete:" %>
+      <%= form.text_area :descripcion, class: "size-letter",size: "70x3" %>
+      <div class="grid-x">
+        <div class="cell large-5">
+          <%= form.label :cant_personas, "Cant. de personas que abarca el Paquete:" %>
+          <%= form.select :cant_personas, (1..100),  {}  ,{:class => "size-letter"} %>  
+        </div>
+        <div class="cell large-2"></div>
+        <div class="cell large-5">
+          <%= form.label :duracion_dias, "Duracion (en dias) del Paquete:" %>
+          <%= form.select :duracion_dias, (1..60), {} ,{:class => "size-letter"} %>  
+        </div>
+      </div>
+      <%= form.label :picture, "Imagen Referencial:" %>
+      <%= form.file_field :picture %>
+      <br>
+      <br>
+      <div class="grid-x">
+        <div class="cell large-3"></div>
+        <div class="cell large-6 actions"><%= form.submit class: "button text size expanded rounded"%></div>
+        <div class="cell large-3"></div>
+      </div>
+      <% end %>
   </div>
-<% end %>
+  <div class="cell large-2"></div>
+</div>
+
+

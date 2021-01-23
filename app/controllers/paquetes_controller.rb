@@ -1,5 +1,6 @@
 class PaquetesController < ApplicationController
   before_action :set_paquete, only: [:show, :edit, :update, :destroy]
+  before_action :set_agency
 
   # GET /paquetes
   # GET /paquetes.json
@@ -28,7 +29,7 @@ class PaquetesController < ApplicationController
 
     respond_to do |format|
       if @paquete.save
-        format.html { redirect_to @paquete, notice: 'Paquete was successfully created.' }
+        format.html { redirect_to @agency, notice: 'Paquete was successfully created.' }
         format.json { render :show, status: :created, location: @paquete }
       else
         format.html { render :new }
@@ -65,6 +66,10 @@ class PaquetesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_paquete
       @paquete = Paquete.find(params[:id])
+    end
+
+    def set_agency
+      @agency = Agency.find(params[:agency_id])
     end
 
     # Only allow a list of trusted parameters through.

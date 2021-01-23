@@ -219,19 +219,21 @@
 }
 
 .button-hover-like:hover {
-    border-color: #1779ba;
+    border-color: #114E60;
     background: transparent;
     transition: border-color 0.2s;
 }
 
 .button-hover-like:hover span {
     margin-right: 20px;
-    color: #1779ba;
+    color: #114E60;
 }
 
 .button-hover-like:hover .fa {
     right: 10px;
 }
 
-
+.socios-button{
+    font-size: 17px;
+}
 

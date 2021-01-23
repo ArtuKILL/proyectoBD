@@ -1,12 +1,18 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+<div class="grid-x">
+    <div class="cell large-2"></div>
+    <div class="cell large-8 title-form">
+        <br>
+        <h1 class="title">Editar <%= resource_name.to_s.humanize %></h1>
+        <hr class="line">
+    </div>
+    <div class="cell large-2"></div>
+</div>
 
 
 <div class="grid-x">
   <div class="cell large-2"></div>
     <div class="cell large-8 text">
       
-    
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "clientes/shared/error_messages", resource: resource %>
 
@@ -36,78 +42,70 @@
       </div>
 
       <div class="field">
-        <%= f.label :email %><br />
+        <%= f.label :email %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
-
-
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
 
       <div class="field">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.label :password %> <i>(Dejalo en blanco si no quiere cambiarlo)</i><br />
         <%= f.password_field :password, autocomplete: "new-password" %>
         <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
+        <em><%= @minimum_password_length %> caracteres minimo</em>
         <% end %>
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation %><br />
+        <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
       <div class="grid-x">
-
         <div class="cell large-2">
           <%= f.label :genero, "Genero:" %>
           <%= f.select :genero, [["Masculino","M"], ["Femenino","F"], ["Otro","O"]] %>
-
+          <br>
           <%= f.label :tipo, "Tipo de Cliente:" %>
-          <%= f.select :tipo, [["natural","N"], ["Juridico","J"]]%>
+          <%= f.select :tipo, [["Natural","N"], ["Juridico","J"]]%>
         </div>
-
         <div class="cell large-2"></div>
-
         <div class="cell large-8">
           <%= f.label :fecha_nac, "Fecha de nacimiento:"%>
-
-
-          <div class="cell large-3">
-            <%=  f.date_select :fecha_nac %>
-          </div>
-
-          <div class="cell large-1"></div>
+          <%=  f.date_select :fecha_nac %>
         </div>
-
-        <br>
-        
       </div>
 
       <div class="field">
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+        <%= f.label :current_password %> <i>(Necesitamos tu contraseña actual para confirmar tus cambios)</i><br />
         <%= f.password_field :current_password, autocomplete: "current-password" %>
       </div>
-
+      <br>
       <div class="actions">
-        <%= f.submit "Actualizar", class: "button text size expanded rounded"%>
+        <div class="grid-x">
+          <div class="cell large-3"></div>
+          <div class="cell large-6"><%= f.submit "Actualizar", class: "button text size expanded rounded"%></div>
+          <div class="cell large-3"></div>
+        </div>
       </div>
-      
       <% end %>
-
-      <h3>Cancel my account</h3>
-
-      <p>Unhappy?
-        <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "hollow button alert text size rounded" %>
-      </p>
-
-      <%= link_to "Back", :back %>
-
     </div>
-  </div>
+    <div class="cell large-2"></div>
+    <br>  
 </div>
+
+<hr>
+<br>
+<div class="grid-x">
+  <div class="cell large-1"></div>
+  <div class="cell large-5"><h3 class="text">¿Quieres cancelar tu cuenta? No podras recuperarla</h3></div>
+  <div class="cell large-1"></div>
+  <div class="cell large-4"><%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "hollow button alert expanded text size rounded" %></div>
+  <div class="cell large-1"></div>
+</div>
+      
+
 
 
