@@ -1,10 +1,10 @@
 class Agency < ApplicationRecord
-    has_many :socio1, class_name: "Socio", foreign_key: "agencia1_id"
-    has_many :socio2, class_name: "Socio", foreign_key: "agencia2_id"
+    has_many :socios, class_name: "Socio", foreign_key: "agencia1_id"
+    #has_many :socio2, class_name: "Socio", foreign_key: "agencia2_id"
     has_many :paquetes
     has_many :a_p_hists
     has_many :ofertas
-    has_many :registro_clientes
+    has_many :registro_clientes, :foreign_key =>:id_agencia
     has_many :empresa_proveedores, :through => :a_p_hists
     has_many :clientes, :through => :registro_clientes
     has_many :metodo_pagos
@@ -13,7 +13,7 @@ class Agency < ApplicationRecord
     has_many :rallies, :through => :agencia_rallies
     has_many :asesores
     has_many :areaint_es  
-    
+    #accepts_nested_attributes_for :socios
 
     validates :nombre_agencia, :url, :descripcion, :alcance, :tipo, presence: true
     validates :nombre_agencia, length: { minimum: 4 }

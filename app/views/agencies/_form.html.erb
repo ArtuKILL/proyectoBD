@@ -22,16 +22,14 @@
       <%= form.select :alcance, ["Local", "Nacional", "Internacional"],  {}  ,{:class => "size-letter"} %>
       <%= form.label :tipo, "Tipo de la Agencia:" %>
       <%= form.select :tipo, ["Tour Operadoras", "Mayoristas", "Minoristas", "Mixta"], {} ,{:class => "size-letter"} %>
-      <%= form.label :socio, "Socios de la Agencia:" %>
-    
       <%= form.label :picture, "Imagen Referencial:" %>
       <%= form.file_field :picture %>
-
+      <br>
       <br>
       <div class="grid-x">
-        <div class="cell large-4"></div>
-        <div class="cell large-4"><%= form.submit class: "button text size expanded rounded"%></div>
-        <div class="cell large-4"></div>
+        <div class="cell large-3"></div>
+        <div class="cell large-6"><%= form.submit class: "button text size expanded rounded"%></div>
+        <div class="cell large-3"></div>
       </div>
   <% end %>
   

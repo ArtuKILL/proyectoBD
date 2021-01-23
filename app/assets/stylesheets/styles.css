@@ -128,4 +128,110 @@
     box-shadow: 1px 1px 10px gray;
     text-align: center;
 }
+.alert-callout-border {
+    width: 100%;
+    padding: 1.3rem;
+    border-left-width: 0.3125rem;
+    border-left-color: #cacaca;
+}
+
+.alert-callout-border strong {
+    color: #0a0a0a;
+}
+
+.alert-callout-border .close-button {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.alert-callout-border.radius {
+    border-radius: 0.6rem;
+}
+
+.alert-callout-border.primary {
+    border-left-color: #1779ba;
+}
+
+.alert-callout-border.primary strong {
+    color: #1779ba;
+}
+
+.alert-callout-border.secondary {
+    border-left-color: #767676;
+}
+
+.alert-callout-border.secondary strong {
+    color: #767676;
+}
+
+.alert-callout-border.alert {
+    border-left-color: #cc4b37;
+}
+
+.alert-callout-border.alert strong {
+    color: #cc4b37;
+}
+
+.alert-callout-border.success {
+    border-left-color: #3adb76;
+}
+
+.alert-callout-border.success strong {
+    color: #3adb76;
+}
+
+.alert-callout-border.warning {
+    border-left-color: #ffae00;
+}
+
+.alert-callout-border.warning strong {
+    color: #ffae00;
+}
+
+.button-hover-like {
+    border: 2px solid #767676;
+    background: transparent;
+    color: #767676;
+    text-transform: uppercase;
+    overflow: hidden;
+    letter-spacing: 0.07rem;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+}
+
+.button-hover-like span {
+    transition: all 0.2s ease-in-out;
+}
+
+.button-hover-like .fa {
+    position: absolute;
+    font-size: 1.2rem;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: #F15261;
+    right: -20px;
+    transition: 0.4s right cubic-bezier(0.38, 0.6, 0.48, 1);
+}
+
+.button-hover-like:hover {
+    border-color: #1779ba;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.button-hover-like:hover span {
+    margin-right: 20px;
+    color: #1779ba;
+}
+
+.button-hover-like:hover .fa {
+    right: 10px;
+}
+
+
 

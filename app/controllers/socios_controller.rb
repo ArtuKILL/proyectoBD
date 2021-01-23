@@ -1,6 +1,6 @@
 class SociosController < ApplicationController
   before_action :set_socio, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_agency
   # GET /socios
   # GET /socios.json
   def index
@@ -25,10 +25,10 @@ class SociosController < ApplicationController
   # POST /socios.json
   def create
     @socio = Socio.new(socio_params)
-
+    @socio.agencia1 = @agency
     respond_to do |format|
       if @socio.save
-        format.html { redirect_to @socio, notice: 'Socio was successfully created.' }
+        format.html { redirect_to @socio.agencia1, notice: 'Socio was successfully created.' }
         format.json { render :show, status: :created, location: @socio }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class SociosController < ApplicationController
   def destroy
     @socio.destroy
     respond_to do |format|
-      format.html { redirect_to socios_url, notice: 'Socio was successfully destroyed.' }
+      format.html { redirect_to @agency, notice: 'Socio was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,9 +66,14 @@ class SociosController < ApplicationController
     def set_socio
       @socio = Socio.find(params[:id])
     end
+    def set_agency
+      @agency = Agency.find(params[:agency_id])
+    end
+
 
     # Only allow a list of trusted parameters through.
     def socio_params
-      params.fetch(:socio, {})
+      params.require(:socio).permit(:fecha_inicial,:fecha_final,:agencia1_id,:agencia2_id)
     end
+    
 end

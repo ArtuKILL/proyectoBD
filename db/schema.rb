@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 2021_01_20_092940) do
+=======
 ActiveRecord::Schema.define(version: 2021_01_18_195456) do
+>>>>>>> main
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -260,7 +264,20 @@ ActiveRecord::Schema.define(version: 2021_01_18_195456) do
 
   create_table "aci_socios", primary_key: "fecha_inicial", id: :date, force: :cascade do |t|
     t.date "fecha_final"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
+    t.bigint "agencia1_id"
+    t.bigint "agencia2_id"
+    t.index ["agencia1_id"], name: "index_socios_on_agencia1_id"
+    t.index ["agencia2_id"], name: "index_socios_on_agencia2_id"
+<<<<<<< HEAD
+=======
+=======
     t.bigint "id_agencia", null: false
+>>>>>>> 872c4888ccdb40abb8fdf59d0369bb71e57bcfcb
+>>>>>>> main
   end
 
   create_table "aci_valoraciones", primary_key: "id_valoracion", id: :bigint, default: -> { "nextval('valoraciones_id_seq'::regclass)" }, force: :cascade do |t|

@@ -16,21 +16,25 @@
 </head>
 
 <body>
-
   <%= render 'home/header' %>
 
-  <div class="notice">
-    <%= notice %>
-  </div>
-  <!-- [TODO]: TERMINAR ESTO -->
-  <div class="alert">
-    <%= alert %>
-  </div>
+  
+
 
   <div class="grid-x">
     <div class="cell large-1"></div>
     <div class="cell large-10">
-    <%= yield %>
+      
+      <% if notice  %>
+        <%= render 'home/notice' %>
+      <% end %>
+
+      <% if alert %>
+        <%= render 'home/alert' %>
+      <% end %>
+
+      <%= yield %>
+
     </div>
     <div class="cell large-1"></div>
   </div>

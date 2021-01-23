@@ -10,7 +10,7 @@ class AgenciesController < ApplicationController
   # GET /agencies/1
   # GET /agencies/1.json
   def show
-
+   
   end
 
   # GET /agencies/new
@@ -59,10 +59,23 @@ class AgenciesController < ApplicationController
     @agency.destroy
     respond_to do |format|
       format.html { redirect_to agencies_url, notice: 'Agency was successfully destroyed.' }
-      format.json { head :no_content }
+      
     end
   end
 
+  def crear_registro_cliente
+    registro = RegistroCliente.new(fecha_registro: Date.current) 
+    @agency = Agency.find(params[:format])
+    registro.agency = @agency
+    registro.cliente = current_cliente
+    current_cliente.registro_clientes.append(registro)
+    @agency.registro_clientes.append(registro)
+    if registro.save
+      redirect_to @agency, notice: "Te has registrado en #{@agency.nombre_agencia}"
+    else
+      redirect_to @agency, alert: "Ha ocurrido un error al registrarte en #{@agency.nombre_agencia}"
+     end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -74,4 +87,6 @@ class AgenciesController < ApplicationController
     def agency_params
       params.fetch(:agency, {}).permit(:id,:nombre_agencia, :url, :alcance, :tipo, :descripcion)
     end
+  
 end
+ 

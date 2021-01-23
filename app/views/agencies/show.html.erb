@@ -1,7 +1,5 @@
-
 <br>
 <br>
-
 <div class="grid-x">
     <div class="cell large-5">
         <%= image_tag("viajes-el-corte-ingles_img81859t0.jpg", :class => 'rounded-a')%>
@@ -45,10 +43,19 @@
             <div class="cell large-9">
                 <p class="text size"><i><%= @agency.url %></i></p>
             </div>
+
+            <% if cliente_signed_in? && !@agency.clientes.include?(current_cliente)%>
+            <div class="cell large-9">
+                <%= button_to agencies_crear_registro_cliente_url(@agency.id) do%>
+                    <button class="button-hover-like button"><span>Registrarse</span><i class="fa fa-heart"></i></button>
+                <% end %>
+            </div>
+            <% end %>
         </div>
     </div>
 </div>
 
 <br>
 <hr>
+<%=render "socios/form"%>
 
