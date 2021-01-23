@@ -5,6 +5,7 @@ class ViajerosController < ApplicationController
   # GET /viajeros.json
   def index
     @viajeros = Viajero.all
+    @agencies= @viajero.agencies.all
   end
 
   # GET /viajeros/1

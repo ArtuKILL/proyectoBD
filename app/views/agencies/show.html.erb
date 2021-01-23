@@ -1,3 +1,4 @@
+
 <br>
 <br>
 <div class="grid-x">
@@ -57,5 +58,33 @@
 
 <br>
 <hr>
-<%=render "socios/form"%>
+<div class="grid-x size">
+      <div class="cell large-5">
+            <p class="text size">Socios de esta Agencia:</p>
+            <hr>
+            <ul>
+             <% @agency.socio.each do |socio| %> 
+                <% if socio.fecha_final.nil? %>
+                    <li style="list-style:none"><%=  socio.agencia2.nombre_agencia %>
+                        <%= button_to agencies_cerrar_sociedad_url(socio.fecha_inicial) do%>
+                        <button class="hollow button alert rounded"><span>cerrar sociedad</span><i
+                                class="fa fa-heart"></i></button>
+                    <% end %>
+                    </li>
+                    
+                <% end %>
+            <% end %>
+            </ul>
+
+
+      </div>
+      <div class="cell large-2"></div>
+      <div class="cell large-5 text">
+      <p class="text size">Agregar Socios:</p>
+      <hr>
+        <%=render "socios/form" , socio: @agency.socios.build%>
+      </div>
+</div>
+
+
 

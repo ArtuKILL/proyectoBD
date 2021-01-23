@@ -10,7 +10,7 @@ class AgenciesController < ApplicationController
   # GET /agencies/1
   # GET /agencies/1.json
   def show
-   
+    @socio = Socio.all
   end
 
   # GET /agencies/new
@@ -21,6 +21,7 @@ class AgenciesController < ApplicationController
   # GET /agencies/1/edit
   def edit
   end
+
 
   # POST /agencies
   # POST /agencies.json
@@ -72,6 +73,17 @@ class AgenciesController < ApplicationController
     @agency.registro_clientes.append(registro)
     if registro.save
       redirect_to @agency, notice: "Te has registrado en #{@agency.nombre_agencia}"
+    else
+      redirect_to @agency, alert: "Ha ocurrido un error al registrarte en #{@agency.nombre_agencia}"
+     end
+  end
+
+  def cerrar_sociedad
+    socio = Socio.find(params[:format])
+  
+    if socio.update_attribute(:fecha_final, Time.now)
+      flash[:notice] = "Sociedad cerrada"
+      redirect_to request.referer
     else
       redirect_to @agency, alert: "Ha ocurrido un error al registrarte en #{@agency.nombre_agencia}"
      end
