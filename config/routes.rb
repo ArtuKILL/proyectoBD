@@ -11,9 +11,10 @@ Rails.application.routes.draw do
 
   resources :agencies do 
     resources :socios,param: :fecha_inicial
-    resources :paquetes
+    resources :paquetes, except: :index
   end
 
+  get 'paquetes/index'
   get 'home/index'
   get 'test/index'
   root 'agencies#index'

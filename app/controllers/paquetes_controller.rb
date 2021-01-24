@@ -1,11 +1,14 @@
 class PaquetesController < ApplicationController
   before_action :set_paquete, only: [:show, :edit, :update, :destroy]
-  before_action :set_agency
+  before_action :set_agency, except: [:index]
 
   # GET /paquetes
   # GET /paquetes.json
   def index
     @paquetes = Paquete.all
+    @agencies = Agency.all
+
+    @paquete = Paquete.find_by(params[:id_agencia])
   end
 
   # GET /paquetes/1
@@ -43,7 +46,7 @@ class PaquetesController < ApplicationController
   def update
     respond_to do |format|
       if @paquete.update(paquete_params)
-        format.html { redirect_to @paquete, notice: 'Paquete was successfully updated.' }
+        format.html { redirect_to  agency_paquete_path(@agency), notice: 'Paquete was successfully updated.' }
         format.json { render :show, status: :ok, location: @paquete }
       else
         format.html { render :edit }
@@ -57,10 +60,15 @@ class PaquetesController < ApplicationController
   def destroy
     @paquete.destroy
     respond_to do |format|
-      format.html { redirect_to paquetes_url, notice: 'Paquete was successfully destroyed.' }
+      format.html { redirect_to paquetes_index_path, notice: 'Paquete was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
+
+  def noches
+    @noche =  @paquete.duracion_dias.to_i - 1
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
