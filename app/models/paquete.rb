@@ -1,5 +1,5 @@
 class Paquete < ApplicationRecord
-    belongs_to :agencia, foreign_key: "id"
+    belongs_to :agencia, foreign_key: "id_agencia"
     has_many :paquete_contratos
     has_many :hist_precios
     has_many :detalle_servicios
