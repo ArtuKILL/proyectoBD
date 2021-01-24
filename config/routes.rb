@@ -9,6 +9,11 @@ Rails.application.routes.draw do
     registrations: 'clientes/registrations'
   }
 
+  resources :paquetes do
+    resources :paquete_contratos
+  end
+
+
   resources :agencies do 
     resources :socios,param: :fecha_inicial
     resources :paquetes, except: :index

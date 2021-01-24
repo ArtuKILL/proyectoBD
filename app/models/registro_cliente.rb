@@ -3,5 +3,5 @@ class RegistroCliente < ApplicationRecord
     belongs_to :cliente, :foreign_key => "id_natriff"
     belongs_to :agency, :foreign_key => "id_agencia"
     has_many :participantes
-    has_many :paquete_contratos
+    has_many :paquete_contratos, foreign_key: :nro_registro 
 end

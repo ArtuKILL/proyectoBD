@@ -1,6 +1,8 @@
 class PaqueteContratosController < ApplicationController
   before_action :set_paquete_contrato, only: [:show, :edit, :update, :destroy]
 
+  
+
   # GET /paquete_contratos
   # GET /paquete_contratos.json
   def index
@@ -14,7 +16,9 @@ class PaqueteContratosController < ApplicationController
 
   # GET /paquete_contratos/new
   def new
+    @formasDePago = {TarjetaC: "Tarjeta Credito", TarjetaD: "Tarjeta Debito", Zelle: "Zelle", Cta: "Cuenta Bancaria"}
     @paquete_contrato = PaqueteContrato.new
+    
   end
 
   # GET /paquete_contratos/1/edit
@@ -24,8 +28,19 @@ class PaqueteContratosController < ApplicationController
   # POST /paquete_contratos
   # POST /paquete_contratos.json
   def create
-    @paquete_contrato = PaqueteContrato.new(paquete_contrato_params)
 
+   
+   
+  
+    @paquete_contrato = PaqueteContrato.new(paquete_contrato_params)
+    # do @paquete_contrato.create_registro_clientes()
+
+    # @paquete_contrato.fecha_emision = Date.current
+
+    @paquete_contrato.registro_cliente = current_cliente  #Relación de registro_cliente
+    current_cliente.paquete_contratos << @paquete_contrato
+
+    #TODO: Hacer la relación con el paquete
     respond_to do |format|
       if @paquete_contrato.save
         format.html { redirect_to @paquete_contrato, notice: 'Paquete contrato was successfully created.' }
@@ -69,6 +84,7 @@ class PaqueteContratosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def paquete_contrato_params
+      #params.permit(:TarjetaC, :TarjetaD, :Zelle, :Cta, :numero_personas)
       params.require(:paquete_contrato).permit(:nro_presupuesto, :fecha_emision, :total_calculado, :fecha_salida, :nro_factura, :email_contacto)
     end
 end

@@ -64,19 +64,19 @@ class AgenciesController < ApplicationController
     end
   end
 
-  def crear_registro_cliente
-    registro = RegistroCliente.new(fecha_registro: Date.current) 
-    @agency = Agency.find(params[:format])
-    registro.agency = @agency
-    registro.cliente = current_cliente
-    current_cliente.registro_clientes.append(registro)
-    @agency.registro_clientes.append(registro)
-    if registro.save
-      redirect_to @agency, notice: "Te has registrado en #{@agency.nombre_agencia}"
-    else
-      redirect_to @agency, alert: "Ha ocurrido un error al registrarte en #{@agency.nombre_agencia}"
-     end
-  end
+  # def crear_registro_cliente
+  #   registro = RegistroCliente.new(fecha_registro: Date.current) 
+  #   @agency = Agency.find(params[:format])
+  #   registro.agency = @agency
+  #   registro.cliente = current_cliente
+  #   current_cliente.registro_clientes.append(registro)
+  #   @agency.registro_clientes.append(registro)
+  #   if registro.save
+  #     redirect_to @agency, notice: "Te has registrado en #{@agency.nombre_agencia}"
+  #   else
+  #     redirect_to @agency, alert: "Ha ocurrido un error al registrarte en #{@agency.nombre_agencia}"
+  #    end
+  # end
 
   def cerrar_sociedad
     socio = Socio.find(params[:format])

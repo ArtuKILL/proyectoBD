@@ -82,21 +82,6 @@
 </div>
 <hr>
 
-            <% if cliente_signed_in? && !@agency.clientes.include?(current_cliente)%>
-               <div class="grid-x">
-                        <div class="cell large-7">
-                            <br>
-                            <p class="text size">¿Quieres viajar con esta Agencia y participar en Rallies? ¡Afiliate a esta Agencia!</p>
-                        </div>
-                        <div class="cell large-1"></div>
-                        <div class="cell large-4">
-                           <%= button_to agencies_crear_registro_cliente_url(@agency.id) do%>
-                                <button class="button-hover-like button rounded text socios-button expanded"><span>Afiliarse</span><i class="fa fa-heart"></i></button>
-                            <% end %>      
-                        </div>
-                </div>
-                <hr>
-            <% end %>
                  
 <br>
 <br>

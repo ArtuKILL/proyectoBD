@@ -11,35 +11,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :nro_presupuesto %>
-    <%= form.number_field :nro_presupuesto %>
-  </div>
 
-  <div class="field">
-    <%= form.label :fecha_emision %>
-    <%= form.date_select :fecha_emision %>
-  </div>
-
-  <div class="field">
-    <%= form.label :total_calculado %>
+  <!-- TODO: Ver que hacer con estos atributos
     <%= form.text_field :total_calculado %>
-  </div>
+  </div> -->
 
   <div class="field">
     <%= form.label :fecha_salida %>
     <%= form.date_select :fecha_salida %>
   </div>
 
-  <div class="field">
-    <%= form.label :nro_factura %>
-    <%= form.number_field :nro_factura %>
-  </div>
+
 
   <div class="field">
     <%= form.label :email_contacto %>
     <%= form.text_field :email_contacto %>
   </div>
+
+  <div class="field">
+    <%= form.label :numero_personas, "Cantidad de personas a viajar" %>
+    <%= number_field :numero_personas, in: 1..100%>
+  </div>
+
+  <% hash = {}  %>
+  <% @formasDePago.each_pair do |tipo, nombreFormaPago|  %>
+  <div class="field">
+    <%= form.label tipo, nombreFormaPago  %>
+    <%= check_box_tag tipo, tipo%>
+  </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

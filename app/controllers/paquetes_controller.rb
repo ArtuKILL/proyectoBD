@@ -20,6 +20,7 @@ class PaquetesController < ApplicationController
   def new
     @paquete = @agency.paquetes.new
   end
+  
 
   # GET /paquetes/1/edit
   def edit
