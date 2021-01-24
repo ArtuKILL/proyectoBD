@@ -1,6 +1,16 @@
 <% @agencies.each do |agency|%>
-<h1 class="text"><%= agency.nombre_agencia %></h1>
+<div class="grid-x">
+        <div class="cell large-6"><h1 class="text table"><%= agency.nombre_agencia %></h1></div>
+        <div class="cell large-3"></div>
+        <div class="cell large-3">
+        <%= button_to new_agency_paquete_path(agency, @paquete), :method => :get do%>
+            <button class="button-hover-like button rounded text socios-button expanded"><span>Agregar Paquete</span><i class="fa fa-heart"></i></button>
+       <% end %> 
+        </div>
+</div>
 <br>
+
+
 <% @paquetes.each do |paquete| %>
 
 <% if agency.id == paquete.id_agencia %>
@@ -34,4 +44,5 @@
 <% end %>
 <br>
 <% end %>
+
 

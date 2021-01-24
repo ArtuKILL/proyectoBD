@@ -17,6 +17,8 @@
         </div>
       <% end %>
 
+      <h3 class="text">Datos Básicos:</h3>
+      <hr>
       <%= form.label :nombre_paquete, "Nombre del Paquete:" %>
       <%= form.text_field :nombre_paquete, class: "size-letter" %>
       <%= form.label :descripcion, "Descrición del Paquete:" %>
@@ -32,8 +34,23 @@
           <%= form.select :duracion_dias, (1..60), {} ,{:class => "size-letter"} %>  
         </div>
       </div>
-      <%= form.label :picture, "Imagen Referencial:" %>
-      <%= form.file_field :picture %>
+      <div class="grid-x">
+        <div class="cell large-5">
+          <%= form.label :cant_personas, "Cant. de personas que abarca el Paquete:" %>
+          <%= form.select :cant_personas, (1..100),  {}  ,{:class => "size-letter"} %>  
+        </div>
+        <div class="cell large-2"></div>
+        <div class="cell large-5">
+          <%= form.label :duracion_dias, "Duracion (en dias) del Paquete:" %>
+          <%= form.select :duracion_dias, (1..60), {} ,{:class => "size-letter"} %>  
+        </div>
+      </div>
+      <br>
+      <h3 class="text">Servicios:</h3>
+      <hr>
+      <br>
+      <h3 class="text">Itinerario:</h3>
+      <hr>
       <br>
       <br>
       <div class="grid-x">

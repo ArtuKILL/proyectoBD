@@ -18,7 +18,7 @@ class PaquetesController < ApplicationController
 
   # GET /paquetes/new
   def new
-    @paquete = Paquete.new
+    @paquete = @agency.paquetes.new
   end
 
   # GET /paquetes/1/edit
@@ -32,7 +32,7 @@ class PaquetesController < ApplicationController
     @paquete.id_agencia = @agency.id
     respond_to do |format|
       if @paquete.save
-        format.html { redirect_to agencies_path(@agency), notice: 'Paquete was successfully created.' }
+        format.html { redirect_to agency_paquete_path(@agency, @paquete), notice: 'Paquete was successfully created.' }
         format.json { render :show, status: :created, location: @paquete }
       else
         format.html { render :new }
