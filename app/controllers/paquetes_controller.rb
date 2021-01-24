@@ -27,7 +27,6 @@ class PaquetesController < ApplicationController
   def create
     @paquete = Paquete.new(paquete_params)
     @paquete.id_agencia = @agency.id
-
     respond_to do |format|
       if @paquete.save
         format.html { redirect_to agencies_path(@agency), notice: 'Paquete was successfully created.' }
