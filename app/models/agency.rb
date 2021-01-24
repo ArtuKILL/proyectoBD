@@ -4,7 +4,7 @@ class Agency < ApplicationRecord
     has_many :socio2, class_name: "Socio", foreign_key: "agencia2_id"
 
     
-    has_many :paquetes
+    has_many :paquetes, :foreign_key => :id_agencia
     has_many :a_p_hists
     has_many :ofertas
     has_many :registro_clientes, :foreign_key =>:id_agencia, dependent: :destroy 
