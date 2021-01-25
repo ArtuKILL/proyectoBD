@@ -9,15 +9,16 @@ Rails.application.routes.draw do
     registrations: 'clientes/registrations'
   }
 
-  resources :paquetes do
-    resources :paquete_contratos
-  end
-
+  resources :paquetes 
 
   resources :agencies do 
     resources :socios,param: :fecha_inicial
-    resources :paquetes, except: :index
+    resources :paquetes, except: :index do 
+      resources :paquete_contratos
+    end
   end
+
+  post '/agencies/:agency_id/paquetes/:paquete_id/paquete_contratos'
 
   get 'paquetes/index'
   get 'home/index'
