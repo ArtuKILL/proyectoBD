@@ -67,7 +67,7 @@ class CalendarioAnualesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_calendario_anual
-      @calendario_anual = CalendarioAnual.find(params[:id])
+      @calendario_anual = CalendarioAnual.find(params[:fecha_salida])
     end
 
     def set_paquete
