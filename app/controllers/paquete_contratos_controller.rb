@@ -18,7 +18,7 @@ class PaqueteContratosController < ApplicationController
   def new
     @formasDePago = {TarjetaC: "Tarjeta Credito", TarjetaD: "Tarjeta Debito", Zelle: "Zelle", Cta: "Cuenta Bancaria"}
     @paquete_contrato = PaqueteContrato.new
-    
+    @idAgencia = params[:agency_id]
   end
 
   # GET /paquete_contratos/1/edit
@@ -28,19 +28,22 @@ class PaqueteContratosController < ApplicationController
   # POST /paquete_contratos
   # POST /paquete_contratos.json
   def create
-
-   
-   
-  
+    logger.debug ":format -> #{params[:format]}"
+    
+    #agency = Agency.find(params[:format])
     @paquete_contrato = PaqueteContrato.new(paquete_contrato_params)
-    # do @paquete_contrato.create_registro_clientes()
+
+    logger.debug "Cliente no tiene registro con #{agency}" if current_client.agencies.include?(agency)
 
     # @paquete_contrato.fecha_emision = Date.current
+    # @paquete_contrato.create_registro_clientes(fecha_registro: Date.today)
 
     @paquete_contrato.registro_cliente = current_cliente  #Relación de registro_cliente
     current_cliente.paquete_contratos << @paquete_contrato
 
     #TODO: Hacer la relación con el paquete
+
+
     respond_to do |format|
       if @paquete_contrato.save
         format.html { redirect_to @paquete_contrato, notice: 'Paquete contrato was successfully created.' }

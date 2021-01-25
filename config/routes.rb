@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/agencies/:agency_id/paquetes/:paquete_id/paquete_contratos'
+
   get 'paquetes/index'
   get 'home/index'
   get 'test/index'
