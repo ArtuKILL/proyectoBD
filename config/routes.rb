@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  resources :hist_precios
   root 'agencies#index'
 
   resources :viajeros

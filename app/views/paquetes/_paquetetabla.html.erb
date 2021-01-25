@@ -39,7 +39,7 @@
 <hr>
 <br>
 
-<% if (agency.id != @paquete.id_agencia) %>
+<% if !(agency.id = agency.paquetes.find_by(params[:id_agencia])) %>
     <p class="text title-form size">*No hay paquetes asociados a esta agencia*</p>
 <% end %>
 <br>
