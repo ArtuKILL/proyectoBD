@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
  
+  
+  resources :calendario_anuales
   resources :viajeros
   resources :rallies
   resources :paquete_contratos
@@ -10,13 +12,18 @@ Rails.application.routes.draw do
   }
 
   resources :paquetes do
-    resources :paquete_contratos
+    
+    
   end
 
 
   resources :agencies do 
-    resources :socios,param: :fecha_inicial
-    resources :paquetes, except: :index
+    resources :socios, param: :fecha_inicial
+    resources :paquetes, except: :index do
+      resources :detalle_servicios
+      resources :paquete_contratos
+      resources :calendario_anuales
+    end
   end
 
   get 'paquetes/index'

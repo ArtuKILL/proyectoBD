@@ -34,25 +34,37 @@
           <%= form.select :duracion_dias, (1..60), {} ,{:class => "size-letter"} %>  
         </div>
       </div>
-      <div class="grid-x">
-        <div class="cell large-5">
-          <%= form.label :cant_personas, "Cant. de personas que abarca el Paquete:" %>
-          <%= form.select :cant_personas, (1..100),  {}  ,{:class => "size-letter"} %>  
-        </div>
-        <div class="cell large-2"></div>
-        <div class="cell large-5">
-          <%= form.label :duracion_dias, "Duracion (en dias) del Paquete:" %>
-          <%= form.select :duracion_dias, (1..60), {} ,{:class => "size-letter"} %>  
-        </div>
-      </div>
       <br>
-      <h3 class="text">Servicios:</h3>
+      <% if @paquete.id != nil %>
+      <h3 class="text">Servicios Asociados:</h3>
       <hr>
+      <br>
+
+      <% if paquete.detalle_servicios.any? %>
+        <%= render 'detalle_servicios/serviciocolumn'%>
+      <% end %>
+      <% if paquete.detalle_servicios.empty? %>
+        <p class="text title-form size">*No hay servicios asociados a este paquete*</p>
+      <% end %>
+
+      <br>
+       <div class="grid-x">
+        <div class="cell large-3"></div>
+        <div class="cell large-6 actions">
+          <%= link_to new_agency_paquete_detalle_servicio_path(@agency, @paquete, @detalle_servicio), :method => :get do%>
+            <button class="button-hover-like button rounded text socios-button expanded"><span>Agregar Servicio</span><i class="fa fa-heart"></i></button>
+          <% end %>
+        </div>
+        <div class="cell large-3"></div>
+      </div> 
+
+
       <br>
       <h3 class="text">Itinerario:</h3>
       <hr>
       <br>
       <br>
+      <% end %>
       <div class="grid-x">
         <div class="cell large-3"></div>
         <div class="cell large-6 actions"><%= form.submit class: "button text size expanded rounded"%></div>
@@ -63,4 +75,33 @@
   <div class="cell large-2"></div>
 </div>
 
+ 
+<div class="grid-x size">
+      <div class="cell large-5">
+            <p class="text size">Fechas de salida asociadas:</p>
+            <hr>
+            <% if paquete.calendario_anuales.any? %>
+             <% @paquete.calendario_anuales.each do |fecha| %> 
+                   <div class="grid-x">
+                        <div class="cell large-1"></div>
+                        <div class="cell large-4">
+                            <p class="text size"><%= fecha.fecha_salida %></p>
+                        </div>
+                        <div class="cell large-2"></div>
+                        <div class="cell large-4">
+                            <%= button_to "Eliminar Fecha", class: "hollow button alert rounded expanded text socios-button" %>      
+                        </div>
+                        <div class="cell large-1"></div>
+                    </div>
+                <% end %>
+            <% end %>
+
+      </div>
+      <div class="cell large-2"></div>
+      <div class="cell large-5 text">
+      <p class="text size">Agregar Fechas de Salida:</p>
+      <hr>
+        <%=render "calendario_anuales/form" , calendario_anual: @paquete.calendario_anuales.build%>
+      </div>
+</div>
 

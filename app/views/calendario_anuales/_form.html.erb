@@ -1,0 +1,27 @@
+<%= form_with(model: [@agency, @paquete, @calendario_anual], local:true) do |form| %>
+  <% if calendario_anual.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(calendario_anual.errors.count, "error") %> prohibited this calendario_anual from being saved:</h2>
+
+      <ul>
+        <% calendario_anual.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :fecha_salida, "Fecha de Salida:" %>
+  <%= form.date_field :fecha_salida, class:"form-control input-sm" %>
+  <%= form.label :descripcion, "Descrición:" %>
+  <%= form.text_area :descripcion, class: "size-letter",size: "70x3" %>
+  <div class="grid-x">
+      <div class="cell large-2"></div>
+      <div class="cell large-8"><%= form.submit class: "button text size expanded rounded"%></div>
+      <div class="cell large-2"></div>
+  </div>
+
+<% end %>
+
+
+  

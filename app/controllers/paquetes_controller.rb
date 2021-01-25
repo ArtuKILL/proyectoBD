@@ -1,5 +1,5 @@
 class PaquetesController < ApplicationController
-  before_action :set_paquete, only: [:show, :edit, :update, :destroy]
+  before_action :set_paquete, only: [:show, :edit, :update, :destroy], except: [:index]
   before_action :set_agency, except: [:index]
 
   # GET /paquetes
@@ -24,6 +24,7 @@ class PaquetesController < ApplicationController
 
   # GET /paquetes/1/edit
   def edit
+    @calendario_anuales = CalendarioAnual.all
   end
 
   # POST /paquetes
@@ -31,15 +32,16 @@ class PaquetesController < ApplicationController
   def create
     @paquete = Paquete.new(paquete_params)
     @paquete.id_agencia = @agency.id
-    respond_to do |format|
-      if @paquete.save
-        format.html { redirect_to agency_paquete_path(@agency, @paquete), notice: 'Paquete was successfully created.' }
-        format.json { render :show, status: :created, location: @paquete }
-      else
-        format.html { render :new }
-        format.json { render json: @paquete.errors, status: :unprocessable_entity }
+ 
+      respond_to do |format|
+          if @paquete.save
+            format.html { redirect_to agency_paquete_path(@agency, @paquete), notice: 'Paquete was successfully created.' }
+            format.json { render :show, status: :created, location: @paquete }
+          else
+            format.html { render :new }
+            format.json { render json: @paquete.errors, status: :unprocessable_entity }
+          end
       end
-    end
   end
 
   # PATCH/PUT /paquetes/1
@@ -66,10 +68,6 @@ class PaquetesController < ApplicationController
     end
   end
 
-  def noches
-    @noche =  @paquete.duracion_dias.to_i - 1
-  end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -83,6 +81,6 @@ class PaquetesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def paquete_params
-      params.fetch(:paquete).permit(:nombre_paquete, :descripcion, :duracion_dias, :cant_personas, :id_agencia)
+      params.fetch(:paquete).permit(:nombre_paquete, :descripcion, :duracion_dias, :cant_personas, :id_agencia, detalles_sevicios_attributes: [:id_servicio, :tipo, :descripcion, :comida])
     end
 end

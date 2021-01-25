@@ -51,11 +51,11 @@ ActiveRecord::Schema.define(version: 2021_01_18_195456) do
 
   create_table "aci_areaint_es", primary_key: "id_areaint_esp", id: :bigint, default: -> { "nextval('areaint_es_id_seq'::regclass)" }, force: :cascade do |t|
     t.text "comentario"
-    t.bigint "id_interes", null: false
-    t.bigint "id_asesor", null: false
-    t.bigint "id_atraccion", null: false
-    t.bigint "id_paquete", null: false
-    t.bigint "id_agencia", null: false
+    t.bigint "id_interes"
+    t.bigint "id_asesor"
+    t.bigint "id_atraccion"
+    t.bigint "id_paquete"
+    t.bigint "id_agencia"
   end
 
   create_table "aci_asesores", primary_key: "id_asesor", id: :bigint, default: -> { "nextval('asesores_id_seq'::regclass)" }, force: :cascade do |t|
@@ -169,6 +169,8 @@ ActiveRecord::Schema.define(version: 2021_01_18_195456) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "tipo", null: false
+    t.check_constraint "(tipo)::text = ANY ((ARRAY['Debito'::character varying, 'Credito'::character varying, 'Pago Electronico'::character varying, 'Transferencia'::character varying])::text[])", name: "tipo_check"
   end
 
   create_table "aci_ofertas", primary_key: "id_oferta", id: :bigint, default: -> { "nextval('ofertas_id_seq'::regclass)" }, force: :cascade do |t|
