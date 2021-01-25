@@ -4,5 +4,5 @@ class AreaintE < ApplicationRecord
     belongs_to :area_interes, foreign_key: :id_interes
     has_one :paquete, foreign_key: :id_paquete
     has_one :atraccion
-    has_one :asesor
+    has_one :asesor, foreign_key: :id_asesor
 end
