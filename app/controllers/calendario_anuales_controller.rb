@@ -27,10 +27,11 @@ class CalendarioAnualesController < ApplicationController
   # POST /calendario_anuales.json
   def create
     @calendario_anual = CalendarioAnual.new(calendario_anual_params)
+    @calendario_anual.id_paquete = @paquete.id
 
     respond_to do |format|
       if @calendario_anual.save
-        format.html { redirect_to @calendario_anual, notice: 'Calendario anual was successfully created.' }
+        format.html { redirect_to agency_paquete_path(@agency, @paquete), notice: 'Calendario anual was successfully created.' }
         format.json { render :show, status: :created, location: @calendario_anual }
       else
         format.html { render :new }
@@ -58,7 +59,7 @@ class CalendarioAnualesController < ApplicationController
   def destroy
     @calendario_anual.destroy
     respond_to do |format|
-      format.html { redirect_to calendario_anuales_url, notice: 'Calendario anual was successfully destroyed.' }
+      format.html { redirect_to agency_paquete_path(@agency, @paquete), notice: 'Calendario anual was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

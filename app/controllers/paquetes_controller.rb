@@ -24,6 +24,8 @@ class PaquetesController < ApplicationController
 
   # GET /paquetes/1/edit
   def edit
+    @calendario_anual = CalendarioAnual.new
+
     @calendario_anuales = CalendarioAnual.all
   end
 
