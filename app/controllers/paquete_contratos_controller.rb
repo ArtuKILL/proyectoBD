@@ -28,18 +28,18 @@ class PaqueteContratosController < ApplicationController
   # POST /paquete_contratos
   # POST /paquete_contratos.json
   def create
-    logger.debug ":format -> #{params[:format]}"
-    
-    #agency = Agency.find(params[:format])
+
+    agency = Agency.find(params[:id_agencia])
     @paquete_contrato = PaqueteContrato.new(paquete_contrato_params)
 
-    logger.debug "Cliente no tiene registro con #{agency}" if current_client.agencies.include?(agency)
+    if current_cliente_sign_in? do
+      logger.debug "Cliente no tiene registro con #{agency}" unless current_cliente.agencies.include?(agency)
+    end
+    @paquete_contrato.fecha_emision = Date.current
+    @paquete_contrato.create_registro_clientes(fecha_registro: Date.today)
 
-    # @paquete_contrato.fecha_emision = Date.current
-    # @paquete_contrato.create_registro_clientes(fecha_registro: Date.today)
-
-    @paquete_contrato.registro_cliente = current_cliente  #Relación de registro_cliente
-    current_cliente.paquete_contratos << @paquete_contrato
+    # @paquete_contrato.registro_cliente = current_cliente  #Relación de registro_cliente
+    # current_cliente.paquete_contratos << @paquete_contrato
 
     #TODO: Hacer la relación con el paquete
 
