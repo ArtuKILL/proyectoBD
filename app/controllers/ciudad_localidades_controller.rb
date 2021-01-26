@@ -2,6 +2,7 @@ class CiudadLocalidadesController < ApplicationController
   before_action :set_ciudad_localidad, only: [:show, :edit, :update, :destroy]
   before_action :set_agency
   before_action :set_paquete
+  before_action :set_pais
 
   # GET /ciudad_localidades
   # GET /ciudad_localidades.json
@@ -27,10 +28,11 @@ class CiudadLocalidadesController < ApplicationController
   # POST /ciudad_localidades.json
   def create
     @ciudad_localidad = CiudadLocalidad.new(ciudad_localidad_params)
+    @ciudad_localidad.id_pais = @pais.id_pais
 
     respond_to do |format|
       if @ciudad_localidad.save
-        format.html { redirect_to @ciudad_localidad, notice: 'Ciudad localidad was successfully created.' }
+        format.html { redirect_to agency_paquete_paises_path(@agency,@paquete,@pais), notice: 'Ciudad localidad was successfully created.' }
         format.json { render :show, status: :created, location: @ciudad_localidad }
       else
         format.html { render :new }
@@ -44,7 +46,7 @@ class CiudadLocalidadesController < ApplicationController
   def update
     respond_to do |format|
       if @ciudad_localidad.update(ciudad_localidad_params)
-        format.html { redirect_to @ciudad_localidad, notice: 'Ciudad localidad was successfully updated.' }
+        format.html { redirect_to agency_paquete_paises_path(@agency,@paquete,@pais), notice: 'Ciudad localidad was successfully updated.' }
         format.json { render :show, status: :ok, location: @ciudad_localidad }
       else
         format.html { render :edit }
@@ -58,7 +60,7 @@ class CiudadLocalidadesController < ApplicationController
   def destroy
     @ciudad_localidad.destroy
     respond_to do |format|
-      format.html { redirect_to ciudad_localidades_url, notice: 'Ciudad localidad was successfully destroyed.' }
+      format.html { redirect_to agency_paquete_paises_path(@agency,@paquete,@pais), notice: 'Ciudad localidad was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -77,9 +79,12 @@ class CiudadLocalidadesController < ApplicationController
       @agency = Agency.find(params[:agency_id])
     end
 
+    def set_pais
+      @pais = Pais.find(params[:pais_id])
+    end
 
     # Only allow a list of trusted parameters through.
     def ciudad_localidad_params
-      params.fetch(:ciudad_localidad).require(:nombre_ciudad)
+      params.fetch(:ciudad_localidad).permit(:nombre_ciudad)
     end
 end

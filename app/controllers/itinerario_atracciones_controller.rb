@@ -2,7 +2,9 @@ class ItinerarioAtraccionesController < ApplicationController
   before_action :set_itinerario_atraccion, only: [:show, :edit, :update, :destroy]
   before_action :set_agency
   before_action :set_paquete
-
+  before_action :set_pais
+  before_action :set_ciudad_localidad
+  
   # GET /itinerario_atracciones
   # GET /itinerario_atracciones.json
   def index
@@ -76,6 +78,15 @@ class ItinerarioAtraccionesController < ApplicationController
     def set_agency
       @agency = Agency.find(params[:agency_id])
     end
+    
+    def set_pais
+      @pais = Pais.find(params[:pais_id])
+    end
+
+    def set_ciudad_localidad
+      @ciudad_localidad = CiudadLocalidad.find(params[:ciudad_id])
+    end
+
 
     # Only allow a list of trusted parameters through.
     def itinerario_atraccion_params

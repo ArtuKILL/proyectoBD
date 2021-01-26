@@ -14,6 +14,7 @@ class PaquetesController < ApplicationController
   # GET /paquetes/1
   # GET /paquetes/1.json
   def show
+    
   end
 
   # GET /paquetes/new

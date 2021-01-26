@@ -29,14 +29,16 @@ Rails.application.routes.draw do
       resources :detalle_servicios do
         resources :alojamiento_hoteles
       end
-      resources :atracciones
-      resources :itinerarios
-      resources :itinerario_atracciones
       resources :paquete_contratos
       resources :calendario_anuales
       resources :hist_precios
-      resources :ciudad_localidades
-      resources :paises
+      resources :paises do
+        resources :ciudad_localidades do
+          resources :itinerario_atracciones
+          resources :atracciones
+          resources :itinerarios
+        end
+      end
     end
   end
 

@@ -1,25 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="grid-x">
+    <div class="cell large-2"></div>
+    <div class="cell large-8 title-form">
+        <br>
+        <h1 class="title">Administrar Pais/Ciudad-Localidad</h1>
+        <hr class="line">
+    </div>
+    <div class="cell large-2"></div>
+</div>
 
-<h1>Paises</h1>
+<br>
+<br>
+<br>
+<br>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @paises.each do |pais| %>
-      <tr>
-        <td><%= link_to 'Show', pais %></td>
-        <td><%= link_to 'Edit', edit_pais_path(pais) %></td>
-        <td><%= link_to 'Destroy', pais, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="grid-x">
+    <div class="cell large-2"></div>
+    <div class="cell large-8">
+        <h3 class="text">Paises Asociados:</h3>
+        <hr>
+        <br>
+        <%= render  "paises/paisdetalle" %>
+        <br>
+        <h3 class="text">Ciudad-Localidad Asociados:</h3>
+        <hr>
+        <br>
+        <%= render  "ciudad_localidades/ciudaddetalle" %>
+    </div>
+    <div class="cell large-2"></div>
+</div>
 
 <br>
 
-<%= link_to 'New Pais', new_pais_path %>
+<div class="grid-x">
+    <div class="cell large-3"></div>
+    <div class="cell large-6">
+      <%= link_to new_agency_paquete_pais_path(@agency, @paquete, @pais), :method => :get do%>
+            <button class="button-hover-like button rounded text socios-button expanded"><span>Agregar Paises</span><i class="fa fa-heart"></i></button>
+          <% end %>
+    </div>
+    </div>
+    <div class="cell large-3"></div>
+</div>

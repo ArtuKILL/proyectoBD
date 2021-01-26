@@ -1,5 +1,10 @@
+<br>
+<div class="grid-x">
+  <div class="cell large-2"></div>
+  <div class="cell large-8 text">
+
 <%= form_with(model:[@agency, @paquete, @hist_precio]) do |form| %>
-  <%= render "clientes/shared/error_messages", resource: @hist_precio%>>
+  <%= render "clientes/shared/error_messages", resource: @hist_precio%>
   
   <%= form.label :fecha_inicio, "Fecha de Inicio del Precio:" %>
   <%= form.date_field :fecha_inicio, class:"form-control input-sm" %>

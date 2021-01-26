@@ -4,5 +4,5 @@ class CiudadLocalidad < ApplicationRecord
     has_many :circuitos
     has_many :valoraciones
     has_many :itinerarios
-    belongs_to :pais
+    belongs_to :pais, foreign_key: :id_pais
 end

@@ -7,6 +7,8 @@ class PaisesController < ApplicationController
   # GET /paises.json
   def index
     @paises = Pais.all
+    @ciudad_localidades = CiudadLocalidad.all
+
   end
 
   # GET /paises/1
@@ -21,6 +23,7 @@ class PaisesController < ApplicationController
 
   # GET /paises/1/edit
   def edit
+    @ciudad_localidad = CiudadLocalidad.new
   end
 
   # POST /paises
@@ -30,7 +33,7 @@ class PaisesController < ApplicationController
 
     respond_to do |format|
       if @pais.save
-        format.html { redirect_to @pais, notice: 'Pais was successfully created.' }
+        format.html { redirect_to agency_paquete_paises_path(@agency,@paquete,@pais), notice: 'Pais was successfully created.' }
         format.json { render :show, status: :created, location: @pais }
       else
         format.html { render :new }
@@ -44,7 +47,7 @@ class PaisesController < ApplicationController
   def update
     respond_to do |format|
       if @pais.update(pais_params)
-        format.html { redirect_to @pais, notice: 'Pais was successfully updated.' }
+        format.html { redirect_to agency_paquete_paises_path(@agency,@paquete,@pais), notice: 'Pais was successfully updated.' }
         format.json { render :show, status: :ok, location: @pais }
       else
         format.html { render :edit }
@@ -58,7 +61,7 @@ class PaisesController < ApplicationController
   def destroy
     @pais.destroy
     respond_to do |format|
-      format.html { redirect_to paises_url, notice: 'Pais was successfully destroyed.' }
+      format.html { redirect_to agency_paquete_paises_path(@agency,@paquete,@pais), notice: 'Pais was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

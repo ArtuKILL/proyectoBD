@@ -3,7 +3,7 @@
   <div class="cell large-2"></div>
   <div class="cell large-8 text">
 
- <% form_with(model: [@agency, @paquete, @pais) do |form| %>
+ <%= form_with(model: [@agency, @paquete, @pais]) do |form| %>
   <% if pais.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(pais.errors.count, "error") %> prohibited this pais from being saved:</h2>
@@ -19,12 +19,17 @@
   <%= form.label :nombre_pais, "Nombre del Pais:" %>
   <%= form.text_field :nombre_pais, class: "size-letter" %>
   <%= form.label :contienente, "Continente del Pais:" %>
-  <%= form.text_field :contienente, class: "size-letter" %>
+  <%= form.select :continente, ["Europa", "America", "Oceania", "Africa", "Asia"],  {}  ,{:class => "size-letter"} %>
   <%= form.label :region, "Region del Pais:" %>
-  <%= form.text_field :region, class: "size-letter" %>
+  <%= form.select :region, ["Europa", "Africa & Medio Oriente", "Australia,Nueva Zelanda & Pacífico", "Asia", "México, Centro & Sur América", "USA, Canadá & Caribe"],  {}  ,{:class => "size-letter"} %>
   <%= form.label :nacionalidad, "Nacionalidad:" %>
   <%= form.text_field :nacionalidad, class: "size-letter" %>
 
+  <% if @pais.id_pais %>
+       <%= link_to  new_agency_paquete_pais_ciudad_localidad_path(@agency, @paquete, @pais, @ciudad_localidad), :method => :get do%>
+            <button class="button-hover-like button rounded text socios-button expanded"><span>Agregar Ciudades</span><i class="fa fa-heart"></i></button>
+          <% end %>
+    <% end %>
 
   <br>
       <br>
