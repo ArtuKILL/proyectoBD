@@ -1,0 +1,20 @@
+<% if resource.errors.any? %>
+  <div id="error_explanation">
+      <% resource.errors.full_messages.each do |message| %>
+        
+          <div data-closable class="callout alert-callout-border alert radius">
+            <strong>
+              <%= I18n.t("errors.messages.not_saved",
+                 count: resource.errors.count,
+                 resource: resource.class.model_name.human.downcase) %>
+            </strong> - <%= message %>
+            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        
+      <% end %>
+  </div>
+<% end %>
+
+

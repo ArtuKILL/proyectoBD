@@ -1,0 +1,17 @@
+<%= form_with(model: hist_precio) do |form| %>
+  <% if hist_precio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(hist_precio.errors.count, "error") %> prohibited this hist_precio from being saved:</h2>
+
+      <ul>
+        <% hist_precio.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

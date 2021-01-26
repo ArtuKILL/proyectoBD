@@ -1,52 +1,57 @@
-<%= form_with(model: viajero) do |form| %>
-  <% if viajero.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(viajero.errors.count, "error") %> prohibited this viajero from being saved:</h2>
+<br>
+<div class="grid-x">
+  <div class="cell large-2"></div>
+  <div class="cell large-8 text">
 
-      <ul>
-        <% viajero.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :primer_nombre %>
+    <%= form_with(model: viajero) do |form| %>
+    <% if @viajero.errors.any? %>
+    <% @viajero.errors.each do |error| %>
+    <ul>
+      <p class="error-message">*<%= error.full_message%></p>
+    </ul>
+    <% end %>
+    <% end %>
+    <%= form.label :id_viajero, "Nro de identificación/Cédula:" %>
+    <%= form.text_field :id_viajero %>
+    <%= form.label :primer_nombre, "Primer nombre:" %>
     <%= form.text_field :primer_nombre %>
-  </div>
-
-  <div class="field">
-    <%= form.label :segundo_nombre %>
+    <%= form.label :segundo_nombre, "Segundo Nombre:" %>
     <%= form.text_field :segundo_nombre %>
-  </div>
-
-  <div class="field">
-    <%= form.label :primer_apellido %>
+    <%= form.label :primer_apellido, "Primer apellido:" %>
     <%= form.text_field :primer_apellido %>
-  </div>
-
-  <div class="field">
-    <%= form.label :segundo_apellido %>
+    <%= form.label :segundo_apellido, "Segundo apellido:" %>
     <%= form.text_field :segundo_apellido %>
+    <div class="grid-x">
+      <div class="cell large-2">
+        <%= form.label :genero, "Genero:" %>
+        <%= form.select :genero, [["Masculino","M"], ["Femenino","F"], ["Otro","O"]] %>
+      </div>
+      <div class="cell large-2"></div>
+      <div class="cell large-8">
+        <%= form.label :fecha_nacimiento, "Fecha de nacimiento:"%>
+        <div class="grid-x">
+          <div class="cell large-3">
+            <%= select_year(2002, start_year: 1940, end_year: 2002, field_name: "year") %>
+          </div>
+          <div class="cell large-1"></div>
+          <div class="cell large-3">
+            <%= select_month(Date.today, field_name: "month") %>
+          </div>
+          <div class="cell large-1"></div>
+          <div class="cell large-3">
+            <%= select_day(1, use_two_digit_numbers: true, field_name: "day") %>
+          </div>
+          <div class="cell large-1"></div>
+        </div>
+      </div>
+    </div>
+    <%= form.label :correo_viajero, "Correo/Email:" %>
+    <%= form.email_field :correo_viajero %>`
+    <div class="cell large-2"></div>
+    <div class="cell large-4"></div>
+    <br>
+    <div class="cell large-4"><%= form.submit class: "button text size expanded rounded"%></div>
+    <div class="cell large-4"></div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :genero %>
-    <%= form.text_field :genero %>
-  </div>
-
-  <div class="field">
-    <%= form.label :fecha_nacimiento %>
-    <%= form.date_select :fecha_nacimiento %>
-  </div>
-
-  <div class="field">
-    <%= form.label :correo_viajero %>
-    <%= form.text_field :correo_viajero %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

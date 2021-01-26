@@ -1,23 +1,23 @@
-<h1>Paquetes</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @paquetes.each do |paquete| %>
-      <tr>
-        <td><%= link_to 'Show', paquete %></td>
-        <td><%= link_to 'Edit', edit_paquete_path(paquete) %></td>
-        <td><%= link_to 'Destroy', paquete, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="grid-x">
+    <div class="cell large-2"></div>
+    <div class="cell large-8 title-form">
+        <br>
+        <h1 class="title">Administración de Paquetes</h1>
+        <hr class="line">
+    </div>
+    <div class="cell large-2"></div>
+</div>
 
 <br>
+<br>
+<br>
+<br>
 
-<%= link_to 'New Paquete', new_paquete_path %>
+ 
+<div class="grid-x">
+    <div class="cell large-2"></div>
+    <div class="cell large-8">
+        <%= render  "paquetes/paquetetabla" %>
+    </div>
+    <div class="cell large-2"></div>
+</div>

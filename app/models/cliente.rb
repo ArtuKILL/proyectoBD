@@ -1,6 +1,6 @@
 class Cliente < ApplicationRecord
   
-  has_many :registro_clientes
+  has_many :registro_clientes, :foreign_key => :id_natriff, dependent: :destroy 
   has_many :agencies, :through => :registro_clientes
   
   

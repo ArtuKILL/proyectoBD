@@ -1,17 +1,12 @@
-<%= form_with(model: socio) do |form| %>
-  <% if socio.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(socio.errors.count, "error") %> prohibited this socio from being saved:</h2>
 
-      <ul>
-        <% socio.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+            <%= form_with(model:[@agency, socio], local:true) do |form| %>
+                  <%= form.label :fecha_inicial, "Fecha inicial" %>
+                  <%= form.date_field :fecha_inicial, class:"form-control input-sm" %>
+                  <%= form.collection_select :agencia2_id, Agency.order(:nombre_agencia), :id, :nombre_agencia,   {}  ,{:class => "size-letter"} %>
+                  <div class="grid-x">
+                        <div class="cell large-2"></div>
+                        <div class="cell large-8"><%= form.submit class: "button text size expanded rounded"%></div>
+                        <div class="cell large-2"></div>
+                  </div>
+            <% end %>
+  

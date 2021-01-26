@@ -1,5 +1,4 @@
 
-
 <br>
 <div class="grid-x">
   <div class="cell large-2"></div>
@@ -12,26 +11,29 @@
             <% end %>
       <% end %>
 
-      <span class="size-letter"><%= form.label :nombre_agencia, "Nombre de la Agencia:" %></span>
-      <%= form.text_field :nombre_agencia, class: "size" %>
+      <%= form.label :nombre_agencia, "Nombre de la Agencia:" %>
+      <%= form.text_field :nombre_agencia, class: "size-letter" %>
       <%= form.label :url, "Link/Url de la Agencia:" %>
-      <%= form.text_field :url %>
+      <%= form.text_field :url, class: "size-letter"  %>
       <%= form.label :descripcion, "Descrición de la Agencia:" %>
-      <%= form.text_area :descripcion, size: "70x3" %>
+      <%= form.text_area :descripcion, class: "size-letter",size: "70x3" %>
       <%= form.label :alcance, "Alcance de la Agencia:" %>
-      <%= form.select :alcance, ["Local", "Nacional", "Internacional"] %>
+      <%= form.select :alcance, ["Local", "Nacional", "Internacional"],  {}  ,{:class => "size-letter"} %>
       <%= form.label :tipo, "Tipo de la Agencia:" %>
-      <%= form.select :tipo, ["Tour Operadoras", "Mayoristas", "Minoristas", "Mixta"] %>
+      <%= form.select :tipo, ["Tour Operadoras", "Mayoristas", "Minoristas", "Mixta"], {} ,{:class => "size-letter"} %>
       <%= form.label :picture, "Imagen Referencial:" %>
       <%= form.file_field :picture %>
+      <br>
+      <br>
+      <div class="grid-x">
+        <div class="cell large-3"></div>
+        <div class="cell large-6"><%= form.submit class: "button text size expanded rounded"%></div>
+        <div class="cell large-3"></div>
+      </div>
+  <% end %>
+  
   </div>
   <div class="cell large-2"></div>
 </div>
 
-<br>
-<div class="grid-x">
-  <div class="cell large-4"></div>
-  <div class="cell large-4"><%= form.submit class: "button text size expanded rounded"%></div>
-  <div class="cell large-4"></div>
-</div>
-<% end %>
+

@@ -5,6 +5,7 @@ class ViajerosController < ApplicationController
   # GET /viajeros.json
   def index
     @viajeros = Viajero.all
+    @agencies= @viajero.agencies.all
   end
 
   # GET /viajeros/1
@@ -24,8 +25,11 @@ class ViajerosController < ApplicationController
   # POST /viajeros
   # POST /viajeros.json
   def create
+    dia = params[:date][:day]
+    mes = params[:date][:month]
+    año = params[:date][:year]
     @viajero = Viajero.new(viajero_params)
-
+    @viajero.fecha_nacimiento = Date.parse("#{dia}/#{mes}/#{año}")
     respond_to do |format|
       if @viajero.save
         format.html { redirect_to @viajero, notice: 'Viajero was successfully created.' }
@@ -69,6 +73,6 @@ class ViajerosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def viajero_params
-      params.require(:viajero).permit(:primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :genero, :fecha_nacimiento, :correo_viajero)
+      params.require(:viajero).permit(:id_viajero, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :genero, :fecha_nacimiento, :correo_viajero)
     end
 end
