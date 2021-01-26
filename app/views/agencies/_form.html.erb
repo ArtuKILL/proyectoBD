@@ -21,6 +21,8 @@
       <%= form.select :alcance, ["Local", "Nacional", "Internacional"],  {}  ,{:class => "size-letter"} %>
       <%= form.label :tipo, "Tipo de la Agencia:" %>
       <%= form.select :tipo, ["Tour Operadoras", "Mayoristas", "Minoristas", "Mixta"], {} ,{:class => "size-letter"} %>
+
+      <% if agency.id != nil %>
       <p class="text size">Agregar Categorias:</p>
       <hr>
       <div class="grid-x size">
@@ -39,12 +41,12 @@
       <p class="text size">Agregar Categorias:</p>
       <hr>
       <br>
-        <%= link_to new_agency_area_interes_path(@agency, @area_interes), :method => :get do%>
+        <%= link_to  new_agency_area_interes_path(@agency, @area_interes), :method => :get do%>
             <button class="button-hover-like button rounded text socios-button expanded"><span>Agregar Fecha de Salida</span><i class="fa fa-heart"></i></button>
          <% end %>
       </div>
     </div>
-      
+    <% end %>
       <br>
       <br>
       <br>

@@ -16,6 +16,7 @@ class AgenciesController < ApplicationController
   # GET /agencies/new
   def new
     @agency = Agency.new
+    @area_interes = AreaInteres.new
   end
 
   # GET /agencies/1/edit
