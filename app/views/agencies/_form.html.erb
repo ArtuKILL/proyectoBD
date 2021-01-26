@@ -5,11 +5,7 @@
   <div class="cell large-8 text">
 
     <%= form_with(model: agency) do |form| %>
-      <% if @agency.errors.any? %>
-            <% @agency.errors.each do |error| %>
-              <ul><p class="error-message">*<%= error.full_message%></p></ul>
-            <% end %>
-      <% end %>
+      <%= render "clientes/shared/error_messages", resource: agency%>
 
       <%= form.label :nombre_agencia, "Nombre de la Agencia:" %>
       <%= form.text_field :nombre_agencia, class: "size-letter" %>

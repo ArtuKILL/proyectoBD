@@ -4,17 +4,7 @@
   <div class="cell large-8 text">
 
 <%= form_with(model: [@agency, @paquete, @calendario_anual], local:true) do |form| %>
-  <% if calendario_anual.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(calendario_anual.errors.count, "error") %> prohibited this calendario_anual from being saved:</h2>
-
-      <ul>
-        <% calendario_anual.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "clientes/shared/error_messages", resource: @calendario_anual%>
 
   <%= form.label :fecha_salida, "Fecha de Salida:" %>
   <%= form.date_field :fecha_salida, class:"form-control input-sm" %>
