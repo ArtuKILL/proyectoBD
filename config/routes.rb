@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
  
+  
+  
+  resources :alojamiento_hoteles
   resources :area_intereses
   resources :hist_precios
   root 'agencies#index'
@@ -23,11 +26,17 @@ Rails.application.routes.draw do
     resources :socios, param: :fecha_inicial
     resources :area_intereses
     resources :paquetes, except: :index do
-      resources :detalle_servicios
+      resources :detalle_servicios do
+        resources :alojamiento_hoteles
+      end
+      resources :atracciones
+      resources :itinerarios
+      resources :itinerario_atracciones
       resources :paquete_contratos
       resources :calendario_anuales
       resources :hist_precios
-      post 'hist_precios/cerrar_precio_base'
+      resources :ciudad_localidades
+      resources :paises
     end
   end
 

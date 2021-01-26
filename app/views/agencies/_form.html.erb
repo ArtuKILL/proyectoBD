@@ -22,32 +22,6 @@
       <%= form.label :tipo, "Tipo de la Agencia:" %>
       <%= form.select :tipo, ["Tour Operadoras", "Mayoristas", "Minoristas", "Mixta"], {} ,{:class => "size-letter"} %>
 
-      <% if agency.id != nil %>
-      <p class="text size">Agregar Categorias:</p>
-      <hr>
-      <div class="grid-x size">
-      <div class="cell large-5">
-          <p class="text size">Categorias asociadas:</p>
-          <hr>
-          <% if agency.area_intereses.any? %>
-            <%= render 'calendario_anuales/calendariodetalle'%>
-          <% end %>
-          <% if agency.area_intereses.empty? %>
-            <p class="text title-form size">*No hay categorias asociadas a esta agencia*</p>
-          <% end %>
-      </div>
-      <div class="cell large-2"></div>
-      <div class="cell large-5 text">
-      <p class="text size">Agregar Categorias:</p>
-      <hr>
-      <br>
-        <%= link_to  new_agency_area_interes_path(@agency, @area_interes), :method => :get do%>
-            <button class="button-hover-like button rounded text socios-button expanded"><span>Agregar Fecha de Salida</span><i class="fa fa-heart"></i></button>
-         <% end %>
-      </div>
-    </div>
-    <% end %>
-      <br>
       <br>
       <br>
       <div class="grid-x">
@@ -60,5 +34,4 @@
   </div>
   <div class="cell large-2"></div>
 </div>
-
 

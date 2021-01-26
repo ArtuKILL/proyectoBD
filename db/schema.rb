@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_01_18_195456) do
     t.string "categoria_interes", null: false
     t.text "descripcion_interes"
     t.index ["categoria_interes"], name: "categoria_int", unique: true
+    t.check_constraint "(categoria_interes)::text = ANY ((ARRAY['Aventura'::character varying, 'Celebraciones Especiales'::character varying, 'Cultura & Educación'::character varying, 'Submarinismo'::character varying, 'Submarinismo'::character varying, 'Pesca'::character varying, 'Gastronomía'::character varying, 'Romance'::character varying, 'SPA & Bienestar'::character varying, 'Turismo Familiar'::character varying])::text[])", name: "categoria_check"
   end
 
   create_table "aci_areaint_es", primary_key: "id_areaint_esp", id: :bigint, default: -> { "nextval('areaint_es_id_seq'::regclass)" }, force: :cascade do |t|
@@ -146,22 +147,21 @@ ActiveRecord::Schema.define(version: 2021_01_18_195456) do
 
   create_table "aci_hist_precios", primary_key: "fecha_inicio", id: :date, force: :cascade do |t|
     t.date "fecha_final"
-    t.integer "precio_base", null: false
+    t.decimal "precio_base", null: false
     t.bigint "id_paquete", null: false
   end
 
-  create_table "aci_itinerarios", primary_key: ["id_paquetes", "id_ciudades"], force: :cascade do |t|
+  create_table "aci_itinerarios", primary_key: "id_itinerario", id: :bigint, default: -> { "nextval('itinerarios_id_seq'::regclass)" }, force: :cascade do |t|
     t.integer "tiempo_estadia", limit: 2, null: false
     t.text "descripcion", null: false
-    t.bigint "id_paquetes", null: false
-    t.bigint "id_ciudades", null: false
+    t.bigint "id_paquete", null: false
+    t.bigint "id_ciudad", null: false
   end
 
   create_table "aci_itinerarios_atracciones", id: false, force: :cascade do |t|
     t.integer "orden", limit: 2
     t.bigint "id_atracciones", null: false
-    t.bigint "id_itinerario_p", null: false
-    t.bigint "id_itinerario_c", null: false
+    t.bigint "id_itinerario", null: false
   end
 
   create_table "aci_metodos_pago", id: :bigint, default: -> { "nextval('metodos_pago_id_seq'::regclass)" }, force: :cascade do |t|
@@ -317,10 +317,10 @@ ActiveRecord::Schema.define(version: 2021_01_18_195456) do
   add_foreign_key "aci_forma_pagos", "aci_metodos_pago", column: "id_metodo", name: "metodos_formas_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_forma_pagos", "aci_paquete_contratos", column: "nro_presup", primary_key: "nro_presupuesto", name: "contrato_pago_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_hist_precios", "aci_paquetes", column: "id_paquete", name: "paquetes_precios_fk", on_update: :cascade, on_delete: :restrict
-  add_foreign_key "aci_itinerarios", "aci_ciudades_localidades", column: "id_ciudades", primary_key: "id_ciudad", name: "ciudades_itinerarios_fk", on_update: :cascade, on_delete: :restrict
-  add_foreign_key "aci_itinerarios", "aci_paquetes", column: "id_paquetes", name: "paquete_itinerario_fk", on_update: :cascade, on_delete: :restrict
+  add_foreign_key "aci_itinerarios", "aci_ciudades_localidades", column: "id_ciudad", primary_key: "id_ciudad", name: "ciudad_itinerario_fk", on_update: :cascade, on_delete: :restrict
+  add_foreign_key "aci_itinerarios", "aci_paquetes", column: "id_paquete", name: "paquete_itinerario_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_itinerarios_atracciones", "aci_atracciones", column: "id_atracciones", primary_key: "id_atraccion", name: "atracciones_fk", on_update: :cascade, on_delete: :restrict
-  add_foreign_key "aci_itinerarios_atracciones", "aci_itinerarios", column: "id_itinerario_p", primary_key: "id_paquetes", name: "itinerario_fk", on_update: :cascade
+  add_foreign_key "aci_itinerarios_atracciones", "aci_itinerarios", column: "id_itinerario", primary_key: "id_itinerario", name: "itinerario_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_ofertas", "aci_agencies", column: "id_agencias", name: "ofertas_agencias_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_paquete_contratos", "aci_asesores", column: "id_asesor", primary_key: "id_asesor", name: "contrato_asesor_fk", on_update: :cascade, on_delete: :restrict
   add_foreign_key "aci_paquete_contratos", "aci_paquetes", column: "id_paquete", name: "paquete_fk", on_update: :cascade, on_delete: :restrict

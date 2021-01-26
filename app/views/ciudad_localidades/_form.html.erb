@@ -1,0 +1,17 @@
+<%= form_with(model: ciudad_localidad) do |form| %>
+  <% if ciudad_localidad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ciudad_localidad.errors.count, "error") %> prohibited this ciudad_localidad from being saved:</h2>
+
+      <ul>
+        <% ciudad_localidad.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ciudad Localidades</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ciudad_localidades.each do |ciudad_localidad| %>
+      <tr>
+        <td><%= link_to 'Show', ciudad_localidad %></td>
+        <td><%= link_to 'Edit', edit_ciudad_localidad_path(ciudad_localidad) %></td>
+        <td><%= link_to 'Destroy', ciudad_localidad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ciudad Localidad', new_ciudad_localidad_path %>

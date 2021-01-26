@@ -1,0 +1,34 @@
+<br>
+<div class="grid-x">
+  <div class="cell large-2"></div>
+  <div class="cell large-8 text">
+
+<%= form_with(model: [@agency, @paquete, @detalle_servicio, @alojamiento_hotel]) do |form| %>
+  <% if alojamiento_hotel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(alojamiento_hotel.errors.count, "error") %> prohibited this alojamiento_hotel from being saved:</h2>
+
+      <ul>
+        <% alojamiento_hotel.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= form.label :nombre_hotel, "Nombre del Hotel:" %>
+    <%= form.text_field :nombre_hotel, class: "size-letter" %>
+
+ <br>
+  <div class="grid-x">
+      <div class="cell large-3"></div>
+      <div class="cell large-6 actions"><%= form.submit "Crear Servicio", class: "button text size expanded rounded"%></div>
+      <div class="cell large-3"></div>
+  </div>
+<% end %>
+
+ </div>
+  <div class="cell large-2"></div>
+</div>
+
+ 

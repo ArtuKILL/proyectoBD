@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Atracciones</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @atracciones.each do |atraccion| %>
+      <tr>
+        <td><%= link_to 'Show', atraccion %></td>
+        <td><%= link_to 'Edit', edit_atraccion_path(atraccion) %></td>
+        <td><%= link_to 'Destroy', atraccion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Atraccion', new_atraccion_path %>

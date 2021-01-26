@@ -17,8 +17,7 @@ class DetalleServiciosController < ApplicationController
   # GET /detalle_servicios/new
   def new
     @detalle_servicio = DetalleServicio.new
-    @servicio_hotel = @detalle_servicio.servicio_hoteles.build
-    @alojamiento_hotel = @servicio_hotel.build_alojamiento_hotel
+    @alojamiento_hotel = AlojamientoHotel.new
   end
 
   # GET /detalle_servicios/1/edit
@@ -30,12 +29,6 @@ class DetalleServiciosController < ApplicationController
   def create
     @detalle_servicio = DetalleServicio.new(detalle_servicio_params)
     @detalle_servicio.id_paquete = @paquete.id
-    @servicio_hotel = @detalle_servicio.servicio_hoteles.build
-    @alojamiento_hotel = @servicio_hotel.build_alojamiento_hotel
- 
-    @servicio_hotel.id_servicio = @detalle_servicio.id_servicio
-    @servicio_hotel.id_hotel = @detalle_servicio.servicio_hoteles.id_hotel
-
 
     respond_to do |format|
       if @detalle_servicio.save
@@ -88,6 +81,6 @@ class DetalleServiciosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def detalle_servicio_params
-      params.require(:detalle_servicio).permit(:tipo, :descripcion, :comida, servicio_hoteles_attributes: [:id_servicio, :id_hotel, alojamiento_hoteles_attributes: [:id_hotel, :nombre_hotel]])
+      params.require(:detalle_servicio).permit(:tipo, :descripcion, :comida)
     end
 end

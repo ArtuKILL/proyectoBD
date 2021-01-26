@@ -25,11 +25,19 @@ class AreaInteresesController < ApplicationController
   # POST /area_intereses
   # POST /area_intereses.json
   def create
+    @area_intereses = AreaInteres.all
     @area_interes = AreaInteres.new(area_interes_params)
+    @area_interes = AreaInteres.find_by_categoria_interes(@area_interes.categoria_interes)
+    
+    @areaint_e = AreaintE.new
+    @areaint_e.agency = @agency
+    @areaint_e.area_interes = @area_interes
 
     respond_to do |format|
-      if @area_interes.save
-        format.html { redirect_to @area_interes, notice: 'Area interes was successfully created.' }
+      if @areaint_e.save
+        @agency.areaint_es
+        @area_interes.areaint_es
+        format.html { redirect_to @area_interes, notice: 'Area de interes was successfully assigned.' }
         format.json { render :show, status: :created, location: @area_interes }
       else
         format.html { render :new }
