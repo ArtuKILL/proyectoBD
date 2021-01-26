@@ -39,6 +39,30 @@
       <hr>
       <div class="grid-x size">
       <div class="cell large-5">
+          <p class="text size">Categorias asociadas:</p>
+          <hr>
+          <% if paquete.area_intereses.any? %>
+            <%= render 'calendario_anuales/calendariodetalle'%>
+          <% end %>
+          <% if paquete.area_intereses.empty? %>
+            <p class="text title-form size">*No hay categorias asociadas a este paquete*</p>
+          <% end %>
+      </div>
+      <div class="cell large-2"></div>
+      <div class="cell large-5 text">
+      <p class="text size">Agregar Categorias:</p>
+      <hr>
+      <br>
+        <%= link_to new_agency_paquete_calendario_anual_path(@agency, @paquete, @calendario_anual), :method => :get do%>
+            <button class="button-hover-like button rounded text socios-button expanded"><span>Agregar Fecha de Salida</span><i class="fa fa-heart"></i></button>
+         <% end %>
+      </div>
+    </div>
+      
+      <br>
+      <hr>
+      <div class="grid-x size">
+      <div class="cell large-5">
             <p class="text size">Fechas de salida asociadas:</p>
             <hr>
             <% if paquete.calendario_anuales.any? %>
@@ -63,6 +87,35 @@
 
       <br>
       <br>
+
+      <hr>
+      <div class="grid-x size">
+      <div class="cell large-5">
+            <p class="text size">Precio base asociado:</p>
+            <hr>
+            <% if paquete.hist_precios.any? %>
+             <%= render 'hist_precios/preciodetalle'%>
+            <% end %>
+            <% if paquete.hist_precios.empty? %>
+              <p class="text title-form size">*No hay precios base asociadas a este paquete*</p>
+            <% end %>
+
+      </div>
+      <div class="cell large-2"></div>
+      <div class="cell large-5 text">
+      <p class="text size">Agregar Precio Base:</p>
+      <hr>
+      <br>
+        <%= link_to new_agency_paquete_hist_precio_path(@agency, @paquete, @hist_precio), :method => :get do%>
+            <button class="button-hover-like button rounded text socios-button expanded"><span>Agregar Precio Base</span><i class="fa fa-heart"></i></button>
+         <% end %>
+      </div>
+    </div>
+      
+
+      <br>
+      <br>
+
       <h3 class="text">Servicios Asociados:</h3>
       <hr>
       <br>

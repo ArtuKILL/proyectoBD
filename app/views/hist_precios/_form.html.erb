@@ -1,4 +1,4 @@
-<%= form_with(model: hist_precio) do |form| %>
+<%= form_with(model:[@agency, @paquete, @hist_precio]) do |form| %>
   <% if hist_precio.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(hist_precio.errors.count, "error") %> prohibited this hist_precio from being saved:</h2>
@@ -10,8 +10,19 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
+  
+  <%= form.label :fecha_inicio, "Fecha de Inicio del Precio:" %>
+  <%= form.date_field :fecha_inicio, class:"form-control input-sm" %>
+  <%= form.label :precio_base, "Precio Base del Paquete:" %>
+  <%= form.text_field :precio_base, class: "size-letter",size: "70x3" %>
+  <div class="grid-x">
+      <div class="cell large-3"></div>
+      <div class="cell large-6"><%= form.submit class: "button text size expanded rounded"%></div>
+      <div class="cell large-3"></div>
   </div>
 <% end %>
+
+
+  </div>
+  <div class="cell large-2"></div>
+</div>

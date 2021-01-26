@@ -1,0 +1,36 @@
+<br>
+<div class="grid-x">
+  <div class="cell large-2"></div>
+  <div class="cell large-8 text">
+
+<%= form_with(model: [@agency, @area_interes]) do |form| %>
+  <% if area_interes.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(area_interes.errors.count, "error") %> prohibited this area_interes from being saved:</h2>
+
+      <ul>
+        <% area_interes.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :categoria_interes, "Categorias de la Agencia:" %>
+  <%= form.select :categoria_interes, ["Aventura", "Celebraciones Especiales", "Cultura & Educación", "Submarinismo", "Pesca","Gastronomía","Romance","SPA & Bienestar","Turismo Familiar"],  {}  ,{:class => "size-letter"} %>
+  <%= form.label :descripcion, "Descrición de la Agencia:" %>
+  <%= form.text_area :descripcion, class: "size-letter",size: "70x3" %>
+
+  <br>
+  <div class="grid-x">
+      <div class="cell large-3"></div>
+      <div class="cell large-6 actions"><%= form.submit class: "button text size expanded rounded"%></div>
+      <div class="cell large-3"></div>
+  </div>
+<% end %>
+
+ </div>
+  <div class="cell large-2"></div>
+</div>
+
+ 

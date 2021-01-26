@@ -1,0 +1,17 @@
+<% @paquete.hist_precios.each do |h| %> 
+<% if h.fecha_final.nil? %>
+    <div class="grid-x">
+        <div class="cell large-1"></div>
+         <div class="cell large-4">
+            <p class="text size"><%= h.precio_base %></p>
+          </div>
+        <div class="cell large-2"></div>
+         <div class="cell large-4">
+            <%= link_to agency_paquete_hist_precio_path(@agency,@paquete, h.fecha_inicio), :method => :patch do%>
+                <button class="button-hover-like button rounded text socios-button expanded"><span>Eliminar</span><i class="fa fa-heart"></i></button>
+            <% end %>      
+        </div>
+        <div class="cell large-1"></div>
+    </div>
+<% end %>
+<% end %>

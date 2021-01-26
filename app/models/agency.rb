@@ -15,8 +15,9 @@ class Agency < ApplicationRecord
     has_many :agencia_rallies
     has_many :rallies, :through => :agencia_rallies
     has_many :asesores
+    has_many :areaint_es, foreign_key: :id_agencia
     has_many :viajeros, :through => :registro_clientes
-    has_many :area_interes, :through => :areaint_e
+    has_many :area_interes, :through => :areaint_es
       
     #accepts_nested_attributes_for :socios
 

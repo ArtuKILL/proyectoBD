@@ -27,10 +27,11 @@ class HistPreciosController < ApplicationController
   # POST /hist_precios.json
   def create
     @hist_precio = HistPrecio.new(hist_precio_params)
+    @hist_precio.id_paquete = @paquete.id
 
     respond_to do |format|
       if @hist_precio.save
-        format.html { redirect_to @hist_precio, notice: 'Hist precio was successfully created.' }
+        format.html { redirect_to agency_paquete_path(@agency, @paquete), notice: 'Historico precio was successfully created.' }
         format.json { render :show, status: :created, location: @hist_precio }
       else
         format.html { render :new }
@@ -42,15 +43,17 @@ class HistPreciosController < ApplicationController
   # PATCH/PUT /hist_precios/1
   # PATCH/PUT /hist_precios/1.json
   def update
+
     respond_to do |format|
-      if @hist_precio.update(hist_precio_params)
-        format.html { redirect_to @hist_precio, notice: 'Hist precio was successfully updated.' }
+      if @hist_precio.update_attribute(:fecha_final, Time.now)
+        format.html { redirect_to agency_paquete_path(@agency, @paquete), notice: "Precio Base eliminado"}
         format.json { render :show, status: :ok, location: @hist_precio }
       else
         format.html { render :edit }
         format.json { render json: @hist_precio.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # DELETE /hist_precios/1
@@ -62,6 +65,18 @@ class HistPreciosController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def cerrar_precio_base
+    hist_precio = HistPrecio.find(params[:fecha_inicio])
+  
+    if hist_precio.update_attribute(:fecha_fin, Time.now)
+      flash[:notice] = "Precio Base eliminado"
+      redirect_to request.referer
+    else
+      redirect_to @agency, alert: "Ha ocurrido un error al eliminar en #{@paquete.nombre_paquete}"
+     end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -79,6 +94,6 @@ class HistPreciosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hist_precio_params
-      params.fetch(:hist_precio).permit(:)
+      params.fetch(:hist_precio).permit(:fecha_inicio, :fecha_fin, :precio_base)
     end
 end

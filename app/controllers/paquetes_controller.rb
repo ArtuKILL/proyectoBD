@@ -27,6 +27,8 @@ class PaquetesController < ApplicationController
     @calendario_anual = CalendarioAnual.new
 
     @calendario_anuales = CalendarioAnual.all
+    @hist_precio = HistPrecio.all
+    @area_interes = AreaInteres.all
   end
 
   # POST /paquetes
@@ -70,6 +72,7 @@ class PaquetesController < ApplicationController
     end
   end
 
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -83,6 +86,6 @@ class PaquetesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def paquete_params
-      params.fetch(:paquete).permit(:nombre_paquete, :descripcion, :duracion_dias, :cant_personas, :id_agencia, detalles_sevicios_attributes: [:id_servicio, :tipo, :descripcion, :comida])
+      params.fetch(:paquete).permit(:nombre_paquete, :descripcion, :duracion_dias, :cant_personas, :id_agencia)
     end
 end

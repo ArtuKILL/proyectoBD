@@ -15,11 +15,12 @@ class AgenciesController < ApplicationController
 
   # GET /agencies/new
   def new
-    @agency = Agency.new(agency_params)
+    @agency = Agency.new
   end
 
   # GET /agencies/1/edit
   def edit
+    @area_interes = AreaInteres.new
   end
 
 

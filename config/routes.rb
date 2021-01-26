@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  resources :area_intereses
   resources :hist_precios
   root 'agencies#index'
 
@@ -20,10 +21,13 @@ Rails.application.routes.draw do
 
   resources :agencies do 
     resources :socios, param: :fecha_inicial
+    resources :area_intereses
     resources :paquetes, except: :index do
       resources :detalle_servicios
       resources :paquete_contratos
       resources :calendario_anuales
+      resources :hist_precios
+      post 'hist_precios/cerrar_precio_base'
     end
   end
 
@@ -32,6 +36,7 @@ Rails.application.routes.draw do
   get 'home/index'
   post 'agencies/crear_registro_cliente'
   post 'agencies/cerrar_sociedad'
+  
 
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
