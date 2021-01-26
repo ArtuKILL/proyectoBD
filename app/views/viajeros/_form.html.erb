@@ -4,13 +4,7 @@
   <div class="cell large-8 text">
 
     <%= form_with(model: viajero) do |form| %>
-    <% if @viajero.errors.any? %>
-    <% @viajero.errors.each do |error| %>
-    <ul>
-      <p class="error-message">*<%= error.full_message%></p>
-    </ul>
-    <% end %>
-    <% end %>
+    <%= render "clientes/shared/error_messages", resource: viajero%>
     <%= form.label :id_viajero, "Nro de identificación/Cédula:" %>
     <%= form.text_field :id_viajero %>
     <%= form.label :primer_nombre, "Primer nombre:" %>

@@ -1,15 +1,5 @@
 <%= form_with(model:[@agency, @paquete, @hist_precio]) do |form| %>
-  <% if hist_precio.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(hist_precio.errors.count, "error") %> prohibited this hist_precio from being saved:</h2>
-
-      <ul>
-        <% hist_precio.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "clientes/shared/error_messages", resource: @hist_precio%>>
   
   <%= form.label :fecha_inicio, "Fecha de Inicio del Precio:" %>
   <%= form.date_field :fecha_inicio, class:"form-control input-sm" %>

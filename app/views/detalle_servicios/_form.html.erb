@@ -6,17 +6,7 @@
 
 <%= form_with(model:[@agency, @paquete, @detalle_servicio]) do |form| %>
 
-  <% if detalle_servicio.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(detalle_servicio.errors.count, "error") %> prohibited this detalle_servicio from being saved:</h2>
-
-      <ul>
-        <% detalle_servicio.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "clientes/shared/error_messages", resource: @detalle_servicio%>
 
   <%= form.label :tipo, "Nombre/Tipo del Servicio:" %>
   <%= form.text_field :tipo, class: "size-letter" %>
