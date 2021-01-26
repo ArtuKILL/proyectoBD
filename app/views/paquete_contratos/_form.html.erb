@@ -1,49 +1,52 @@
 <%= form_with(model: paquete_contrato) do |form| %>
-<% if paquete_contrato.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(paquete_contrato.errors.count, "error") %> prohibited this paquete_contrato from being saved:</h2>
+<div class="grid-x">
+  <div class="cell large-2"></div>
+  <div class="cell auto">
+    <%= render "clientes/shared/error_messages", resource: paquete_contrato %>
 
-  <ul>
-    <% paquete_contrato.errors.each do |error| %>
-    <li><%= error.full_message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
-
-<!-- TODO: Ver que hacer con estos atributos
+    <!-- TODO: Ver que hacer con estos atributos
     <%= form.text_field :total_calculado %>
   </div> -->
 
-<div class="field">
-  <%= form.label :fecha_salida %>
-  <%= form.date_select :fecha_salida, start_year: Date.today.year, start_month: Date.today.month, start_day: Date.today.day%>
+    <div class="field">
+      <%= form.label :fecha_salida %>
+      <%= form.date_select :fecha_salida, start_year: Date.today.year, start_month: Date.today.month, start_day: Date.today.day%>
+    </div>
+
+
+    <div class="field">
+      <%= form.label :email_contacto %>
+      <%= form.text_field :email_contacto %>
+    </div>
+
+    <div class="field">
+      <%= form.label :numero_personas, "Cantidad de personas a viajar" %>
+      <%= number_field_tag :numero_personas, min: 1, max: 100 %>
+    </div>
+
+    <div class="field">
+      <fieldset class="fieldset">
+        <legend>Metodos de pagos</legend>
+        <% @formasDePago.each_pair do |tipo, nombreFormaPago|  %>
+        <%= check_box_tag tipo, tipo%>
+        <%= form.label tipo, nombreFormaPago  %>
+        <% end %>
+      </fieldset>
+    </div>
+    <%= hidden_field_tag :agencia_id, @idAgencia.to_i%>
+    <%= hidden_field_tag :paquete_id, @idPaquete.to_i%>
+    <div class="grid-x">
+      <div class="cell auto"></div>
+      <div class="cell large-2">
+        <%= form.submit "Siguiente", class: "button rounded bordered shadow expanded"%>
+      </div>
+    </div>
+    
+  </div>
+  <div class="cell large-2"></div>
 </div>
 
 
-<div class="field">
-  <%= form.label :email_contacto %>
-  <%= form.text_field :email_contacto %>
-</div>
+  
 
-<div class="field">
-  <%= form.label :numero_personas, "Cantidad de personas a viajar" %>
-  <%= number_field_tag :numero_personas, min: 1, max: 100 %>
-</div>
-
-<div class="field">
-  <fieldset class="fieldset">
-    <legend>Metodos de pagos</legend>
-    <% @formasDePago.each_pair do |tipo, nombreFormaPago|  %>
-      <%= check_box_tag tipo, tipo%>
-      <%= form.label tipo, nombreFormaPago  %>
-    <% end %>
-  </fieldset>
-</div>
-
-<%= hidden_field_tag :id_agencia, @idAgencia.to_i%>
-
-<div class="actions">
-  <%= form.submit "Siguiente", class: "rounded bordered shadow expanded centered"%>
-</div>
 <% end %>

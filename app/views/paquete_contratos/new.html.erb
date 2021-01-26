@@ -1,4 +1,13 @@
-<h1>New Paquete Contrato</h1>
+<div class="grid-x">
+    <div class="cell large-2"></div>
+    <div class="cell large-8 title-form">
+        <br>
+        <h1 class="title"><%= "Reservar en #{Paquete.find(@idPaquete).nombre_paquete}" %></h1>
+        <hr class="line">
+    </div>
+    <div class="cell large-2"></div>
+</div>
+
 <%= render 'form', paquete_contrato: @paquete_contrato %>
 
-<%= link_to 'Back', paquete_contratos_path %>
+
