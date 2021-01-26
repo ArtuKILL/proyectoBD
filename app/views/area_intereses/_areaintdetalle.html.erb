@@ -1,0 +1,16 @@
+<% @agencies.area_intereses.each do |interes| %> 
+    <div class="grid-x">
+        <div class="cell large-1"></div>
+         <div class="cell large-4">
+            <p class="text size"><%= interes.categoria_interes %></p>
+            <p class="text size"><%= interes.descripcion_interes %></p>
+          </div>
+        <div class="cell large-2"></div>
+         <div class="cell large-4">
+            <%= link_to agency_area_interes_path(@agency, @area_interes),  :method => :delete,  data: { confirm: 'Are you sure?' } do%>
+                <button class="button-hover-like button rounded text socios-button expanded"><span>Eliminar</span><i class="fa fa-heart"></i></button>
+            <% end %>      
+        </div>
+        <div class="cell large-1"></div>
+    </div>
+<% end %>
